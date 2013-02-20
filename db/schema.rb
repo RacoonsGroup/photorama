@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220124112) do
+ActiveRecord::Schema.define(:version => 20130220143511) do
 
   create_table "projects", :force => true do |t|
     t.string   "subdomain"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20130220124112) do
 
   add_index "projects", ["subdomain"], :name => "index_projects_on_subdomain", :unique => true
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+
+  create_table "templates", :force => true do |t|
+    t.string   "name"
+    t.string   "layout_name"
+    t.string   "thumbnail"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
