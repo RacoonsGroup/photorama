@@ -1,3 +1,3 @@
 class Project < ActiveRecord::Base
-  attr_accessible :slug, :title
+  attr_accessible :subdomain, :title
 end
