@@ -3,17 +3,20 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!, except: :show
 
   def show
-    if params[:subdomain].blank?
+    @project = Project.where(subdomain:request.subdomain)
+    unless @project
       redirect_to root_url
     end
-    @project = Project.find(params[:subdomain])
   end
 
   def new
+    if current_user.project
+      redirect_to root_url(:host => with_subdomain(current_user.project.subdomain))
+    end
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = current_user.build_project(params[:project])
     @project.save
   end
 end
