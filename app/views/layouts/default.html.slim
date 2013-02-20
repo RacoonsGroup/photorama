@@ -1,0 +1,38 @@
+doctype html
+html
+  head
+    title PhotoRama
+    = stylesheet_link_tag    "default/default", :media => "all"
+    = javascript_include_tag "default/default"
+    = csrf_meta_tags
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand href="/"
+            span.color-highlight Photo
+            | grapher
+          .nav-collapse
+            ul.nav.pull-right
+              li.active
+                a href="index.php"
+                  = t(:main_page)
+          /! /.nav-collapse
+    .container
+      hr
+        .row
+          .span12
+            .well
+              = yield
+        hr
+          footer.row
+            p
+              | ©2012 Your Company.
+              br
+                | Сайт сделан при помощи сервиса
+                a href="#"
+                  |ФОТОРАМА
