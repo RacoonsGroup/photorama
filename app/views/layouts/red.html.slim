@@ -11,6 +11,9 @@ html
         .container
           .row
             .span12
+              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put')
+              = collection_select(:project, :template_id, @templates, :id, :name)
+              = submit_tag
     .header
       .wrap
         .navbar.navbar_.clearfix
@@ -57,3 +60,4 @@ html
                       li
                         a href="index.php"
                           = t(:main_page)
+

@@ -11,6 +11,9 @@ html
         .container
           .row
             .span12
+              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put')
+              = collection_select(:project, :template_id, @templates, :id, :name)
+              = submit_tag
     .navbar.navbar-fixed-top
       .navbar-inner
         .container

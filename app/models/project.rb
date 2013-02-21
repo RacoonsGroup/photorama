@@ -1,7 +1,8 @@
 # encoding=utf-8
 class Project < ActiveRecord::Base
-  attr_accessible :subdomain, :title
+  attr_accessible :subdomain, :title, :template_id
   belongs_to :user
+  belongs_to :template
 
   validates :title, :subdomain, presence: true
   validates :title, :subdomain, length: { minimum: 2 }

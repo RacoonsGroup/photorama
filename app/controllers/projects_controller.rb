@@ -1,23 +1,27 @@
 class ProjectsController < ApplicationController
 
-  before_filter :authenticate_user!, except: :show
-  layout 'default'
+  before_filter :authenticate_user!
+  layout users_layout
 
   def show
+    @project = Project.where(subdomain:request.subdomain).first
+    @templates = Template.all
+
     if current_user.project.subdomain == request.subdomain
       @admin_panel = true
     else
       @admin_panel = false
     end
-    @project = Project.where(subdomain:request.subdomain).first
+
     unless @project
       redirect_to root_url
     end
-    if (@project.template != nil)
-      #Тут неплохо было бы еще въебать проверку на существование такого шаблона
-      render :layout => @project.template
-    end
 
+    @templates.each do |template|
+      if template.id == @project.template_id
+        render :layout => template.layout_name
+      end
+    end
   end
 
   def new
@@ -30,5 +34,13 @@ class ProjectsController < ApplicationController
     @project = current_user.build_project(params[:project])
     @project.save
     redirect_to root_url(:host => with_subdomain(@project.subdomain))
+  end
+
+  def change_template
+    @project = Project.where(subdomain:request.subdomain).first
+    @project.update_attributes(params[:project])
+    if @project.save
+      redirect_to root_url(:host => with_subdomain(@project.subdomain))
+    end
   end
 end
