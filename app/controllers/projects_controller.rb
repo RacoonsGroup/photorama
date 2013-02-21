@@ -1,13 +1,13 @@
 class ProjectsController < ApplicationController
 
-  before_filter :authenticate_user!
-  layout users_layout
+  before_filter :authenticate_user!, :except => :show
+  layout 'default'
 
   def show
     @project = Project.where(subdomain:request.subdomain).first
     @templates = Template.all
 
-    if current_user.project.subdomain == request.subdomain
+    if current_user && current_user.project.subdomain == request.subdomain
       @admin_panel = true
     else
       @admin_panel = false
