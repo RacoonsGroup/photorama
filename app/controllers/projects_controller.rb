@@ -4,9 +4,18 @@ class ProjectsController < ApplicationController
   layout 'default'
 
   def show
-    @project = Project.where(subdomain:request.subdomain)
+    if current_user.project.subdomain == request.subdomain
+      @admin_panel = true
+    else
+      @admin_panel = false
+    end
+    @project = Project.where(subdomain:request.subdomain).first
     unless @project
       redirect_to root_url
+    end
+    if (@project.template != nil)
+      #Тут неплохо было бы еще въебать проверку на существование такого шаблона
+      render :layout => @project.template
     end
 
   end

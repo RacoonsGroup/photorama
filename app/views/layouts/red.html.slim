@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title PhotoRama
+    = stylesheet_link_tag    "red/red", :media => "all"
+    = javascript_include_tag "red/red"
+    = csrf_meta_tags
+  body
+    -if @admin_panel == true
+      .control-panel
+        .container
+          .row
+            .span12
+    .header
+      .wrap
+        .navbar.navbar_.clearfix
+          .container
+            .row
+              .span4
+                .logo
+                  a href="index.html"
+                    img   src="logo.png"
+              .span8
+                .clear
+                nav#main_menu
+                  .menu_wrap
+                    ul.nav
+                      li
+                        a href="index.php"
+                          = t(:main_page)
+    .page_container
+      .breadcrumb
+        .wrap
+          .container
+            | Главная / Какая-то страница
+      .wrap
+        .container
+          .row
+            .span12
+              = yield
+    #footer
+      .footer_bottom
+        .wrap
+          .container
+            .row
+              .span5
+                .foot_logo
+                  a href="index.html"
+                    img src="foot_logo.png"
+                .copyright © Сайт сделан при помощи сервиса ФОТОРАМА.
+              .span7
+                .foot_right_block
+                  .clear
+                  .clear
+                  .foot_menu
+                    ul
+                      li
+                        a href="index.php"
+                          = t(:main_page)

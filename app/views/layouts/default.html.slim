@@ -6,6 +6,11 @@ html
     = javascript_include_tag "default/default"
     = csrf_meta_tags
   body
+    -if @admin_panel == true
+      .control-panel
+        .container
+          .row
+            .span12
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
@@ -21,18 +26,17 @@ html
               li.active
                 a href="index.php"
                   = t(:main_page)
-          /! /.nav-collapse
     .container
       hr
-        .row
-          .span12
-            .well
-              = yield
-        hr
-          footer.row
-            p
-              | ©2012 Your Company.
-              br
-                | Сайт сделан при помощи сервиса
-                a href="#"
-                  |ФОТОРАМА
+      .row
+        .span12
+          .well
+            = yield
+      hr
+      footer.row
+        p
+          | ©2012 Your Company.
+          br
+            | Сайт сделан при помощи сервиса
+            a href="#"
+              |ФОТОРАМА
