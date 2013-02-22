@@ -4,16 +4,12 @@ html
     title PhotoRama
     = stylesheet_link_tag    "default/default", :media => "all"
     = javascript_include_tag "default/default"
+    -if @admin_panel == true
+      = javascript_include_tag "control_panel"
     = csrf_meta_tags
   body
     -if @admin_panel == true
-      .control-panel
-        .container
-          .row
-            .span12
-              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put') do
-                = collection_select(:project, :template_id, @templates, :id, :name)
-                = submit_tag
+      = render partial: 'partial/control_panel'
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
