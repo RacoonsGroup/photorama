@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    title PhotoRama
+    = stylesheet_link_tag    "gray_red/gray_red", :media => "all"
+    = javascript_include_tag "gray_red/gray_red"
+    = csrf_meta_tags
+    javascript:
+      jQuery(window).load(function() {
+      $x = $(window).width();
+      if($x > 1024)
+      jQuery('.magnifier').touchTouch();
+      });
+  body
+    -if @admin_panel == true
+      style
+        |header {
+        |  margin-top: 40px;
+        |}
+      .control-panel
+        .container
+          .row
+            .span12
+              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put') do
+                = collection_select(:project, :template_id, @templates, :id, :name)
+                = submit_tag
+    /! ============================== header =================================
+    header
+      .container.clearfix
+        .row
+          .span12
+            .navbar.navbar_
+              .container
+                h1.brand.brand_
+                  a href="index.html"
+                    = image_tag "gray_red/logo.gif"
+                  a.btn.btn-navbar.btn-navbar_ data-target=".nav-collapse_" data-toggle="collapse"
+                  | Menu
+                  span.icon-bar
+                .nav-collapse.nav-collapse_.collapse
+                  ul.nav.sf-menu
+                    li.active
+                      a href="index.html"
+                       = t(:main_page)
+    .bg-content
+      #content.content-extra
+        .container
+          .row
+            article.span12
+              = yield
+    /! ============================== footer =================================
+    footer
+      .container.clearfix
+        ul.list-social.pull-right
+          li
+            a.icon-1 href="#"
+          li
+            a.icon-2 href="#"
+          li
+            a.icon-3 href="https://twitter.com/oswt"
+          li
+            a.icon-4 href="#"
+        .privacy.pull-left
+          |© Сайт сделан при помощи сервиса ФОТОРАМА.
+    script src="js/bootstrap.js" type="text/javascript"
