@@ -4,7 +4,8 @@ gem 'rails', '3.2.9'
 gem 'pg'
 gem "twitter-bootstrap-rails"
 gem "devise"
-
+gem 'carrierwave'
+gem "mini_magick"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
