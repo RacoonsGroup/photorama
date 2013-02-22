@@ -17,9 +17,11 @@ class ProjectsController < ApplicationController
       redirect_to root_url
     end
 
-    @templates.each do |template|
-      if template.id == @project.template_id
-        render :layout => template.layout_name
+    if @project.template_id
+      @templates.each do |template|
+        if template.id == @project.template_id
+          render :layout => template.layout_name
+        end
       end
     end
   end
@@ -28,6 +30,7 @@ class ProjectsController < ApplicationController
     if current_user.project
       redirect_to root_url(:host => with_subdomain(current_user.project.subdomain))
     end
+    render :layout => 'application'
   end
 
   def create
