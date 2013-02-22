@@ -4,6 +4,9 @@ html
     title PhotoRama
     = stylesheet_link_tag    "gray_red/gray_red", :media => "all"
     = javascript_include_tag "gray_red/gray_red"
+    -if @admin_panel
+      = stylesheet_link_tag    "control_panel", :media => "all"
+      = javascript_include_tag "control_panel"
     = csrf_meta_tags
     javascript:
       jQuery(window).load(function() {
@@ -12,18 +15,8 @@ html
       jQuery('.magnifier').touchTouch();
       });
   body
-    -if @admin_panel == true
-      style
-        |header {
-        |  margin-top: 40px;
-        |}
-      .control-panel
-        .container
-          .row
-            .span12
-              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put') do
-                = collection_select(:project, :template_id, @templates, :id, :name)
-                = submit_tag
+    -if @admin_panel
+      = render partial: 'partial/control_panel'
     /! ============================== header =================================
     header
       .container.clearfix

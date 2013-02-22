@@ -4,11 +4,12 @@ html
     title PhotoRama
     = stylesheet_link_tag    "default/default", :media => "all"
     = javascript_include_tag "default/default"
-    -if @admin_panel == true
+    -if @admin_panel
+      = stylesheet_link_tag    "control_panel", :media => "all"
       = javascript_include_tag "control_panel"
     = csrf_meta_tags
   body
-    -if @admin_panel == true
+    -if @admin_panel
       = render partial: 'partial/control_panel'
     .navbar.navbar-fixed-top
       .navbar-inner
