@@ -7,13 +7,17 @@ html
     = csrf_meta_tags
   body
     -if @admin_panel == true
+      style
+        |.header {
+        |  margin-top: 40px;
+        |}
       .control-panel
         .container
           .row
             .span12
-              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put')
-              = collection_select(:project, :template_id, @templates, :id, :name)
-              = submit_tag
+              = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put') do
+                = collection_select(:project, :template_id, @templates, :id, :name)
+                = submit_tag
     .header
       .wrap
         .navbar.navbar_.clearfix
@@ -22,7 +26,7 @@ html
               .span4
                 .logo
                   a href="index.html"
-                    img   src="logo.png"
+                    = image_tag 'red/logo.png'
               .span8
                 .clear
                 nav#main_menu
@@ -49,7 +53,7 @@ html
               .span5
                 .foot_logo
                   a href="index.html"
-                    img src="foot_logo.png"
+                    = image_tag 'red/foot_logo.png'
                 .copyright © Сайт сделан при помощи сервиса ФОТОРАМА.
               .span7
                 .foot_right_block

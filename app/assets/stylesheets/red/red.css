@@ -12,4 +12,5 @@
  *= require red/bootstrap
  *= require red/bootstrap-responsive
  *= require red/theme
+ *= require control_panel
  */
