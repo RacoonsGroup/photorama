@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title PhotoRama
+    = stylesheet_link_tag    "application/application", :media => "all"
+    = csrf_meta_tags
+  body
+    .navbar
+      .navbar-inner
+        ul.nav.pull-right
+          li
+            a href='#'
+              | Главная
+          li
+            a href='#'
+              | Помощь
+    = yield
