@@ -43,7 +43,7 @@ img {
 	line-height:30px;
 }
 .follow_us a {
-	background-image:url(../img/top_socials.png);
+	background-image: image-url('red/top_socials.png');
 	background-repeat:no-repeat;
 	height:30px;
 	width:30px;
@@ -107,7 +107,7 @@ img {
   text-transform: uppercase;
   text-shadow: none;
   text-decoration: none;
-  padding:0; 
+  padding:0;
   text-align:left;
 }
 .menu_wrap .nav > li.sfHover > a,
@@ -134,11 +134,11 @@ img {
 .menu_wrap .nav > li.sfHover > a:hover:before,
 .menu_wrap .nav > li > a:hover:before,
 .menu_wrap .nav > li.current > a:before,
-.menu_wrap .nav > li.current > a:hover:before { background: url('../img/li-marker.png') left top no-repeat;
+.menu_wrap .nav > li.current > a:hover:before { background: image-url('red/li-marker.png') left top no-repeat;
 }
 .menu_wrap .nav > li.current > a:before { background: none;
 }
-.menu_wrap .nav > li.current.sfHover > a:before { background: url('../img/li-marker.png') left top no-repeat;
+.menu_wrap .nav > li.current.sfHover > a:before { background: image-url('red/li-marker.png') left top no-repeat;
 }
 .menu_wrap .nav ul {
   position: absolute;
@@ -226,28 +226,28 @@ img {
 	margin:0 auto 14px auto;
 }
 .planning a span.icon1 {
-	background-image:url(../img/icon1.png);
+	background-image: image-url('red/icon1.png');
 	background-position:left top;
 	background-repeat:no-repeat;
 }
 .planning a:hover span.icon1 {background-position:left bottom;
 }
 .planning a span.icon2 {
-	background-image:url(../img/icon2.png);
+	background-image:image-url('red/icon2.png');
 	background-position:left top;
 	background-repeat:no-repeat;
 }
 .planning a:hover span.icon2 {background-position:left bottom;
 }
 .planning a span.icon3 {
-	background-image:url(../img/icon3.png);
+	background-image:image-url('red/icon3.png');
 	background-position:left top;
 	background-repeat:no-repeat;
 }
 .planning a:hover span.icon3 {background-position:left bottom;
 }
 .planning a span.icon4 {
-	background-image:url(../img/icon4.png);
+	background-image:image-url('red/icon4.png');
 	background-position:left top;
 	background-repeat:no-repeat;
 }
@@ -285,7 +285,7 @@ img {
 }
 .welcome_line {
 	height:1px;
-	background:url(../img/welcome_bg.png) no-repeat center top;
+	background:image-url('red/welcome_bg.png') no-repeat center top;
 	position:absolute;
 	left:0;
 	right:0;
@@ -346,7 +346,7 @@ h2.upper {
 	left:50%;
 	top:50%;
 	margin:-20px 0 0 -20px;
-	background-image:url(../img/zoom1.png);
+	background-image:image-url('red/zoom1.png');
 	background-position:0 0;
 	background-repeat:no-repeat;
 	z-index:2;
@@ -481,7 +481,7 @@ ul.tweets li {
 .tweet_arrows {
 	width:22px;
 	height:22px;
-	background:url(../img/twitter.png) no-repeat left top;
+	background:image-url('red/twitter.png') no-repeat left top;
 	float:left;
 	margin:0 8px 0 0;
 	display:block;
@@ -530,7 +530,7 @@ ul.tweets li {
 .testimonials_arrow {
 	width:22px;
 	height:22px;
-	background:url(../img/testimonials_arrow.png) no-repeat left top;
+	background:image-url('red/testimonials_arrow.png') no-repeat left top;
 	float:left;
 	margin:0 8px 0 0;
 	display:block;
@@ -617,7 +617,7 @@ ul.tweets li {
 	border:0 !important;
 }
 #footer .follow_us a {
-	background-image:url(../img/foot_socials.png);
+	background-image:image-url('red/foot_socials.png');
 	background-repeat:no-repeat;
 	height:18px;
 	display:block;
@@ -707,14 +707,14 @@ legend {
 	left:50%;
 	top:50%;
 	margin:-13px 0 0 -33px;
-	background-image:url(../img/zoom.png);
+	background-image:image-url('red/zoom.png');
 	background-position:0 -33px;
 	background-repeat:no-repeat;
 	z-index:2;
 }
 .portfolio_link {
 	margin:-13px 0 0 1px;
-	background-image:url(../img/link.png);
+	background-image:image-url('red/link.png');
 }
 .portfolio_zoom:hover, .portfolio_link:hover {background-position:0 0;
 }
@@ -811,7 +811,7 @@ legend {
 	text-decoration:none;
 }
 .preloader {
-	background:url(../img/preload_img.gif) center center no-repeat;
+	background:image-url('red/preload_img.gif') center center no-repeat;
 	display:block;
 }
 
@@ -826,7 +826,7 @@ legend {
   width: 33px;
   height: 33px;
   margin-top: -17px;
-  background-image:url(../img/portfolio_nav.png);
+  background-image:image-url('red/portfolio_nav.png');
   background-position:0 -33px;
   background-repeat:no-repeat; 
   outline:none;
@@ -859,7 +859,7 @@ ul.links li {
 	padding:0 0 3px 17px;
 	margin:0;
 	color:#313131;
-	background:url(../img/li_arrow.png) no-repeat left top;
+	background:image-url('red/li_arrow.png') no-repeat left top;
 }
 ul.links li a {	color:#313131;
 }
@@ -927,7 +927,7 @@ ul.recent_post div a:hover {color:#d00b01;
 	margin:0 14px 16px 0;
 	height:33px;
 	line-height:33px;
-	background-image:url(../img/tag_bg.png);
+	background-image:image-url('red/tag_bg.png');
 	background-position:100% 0;
 	background-repeat:no-repeat;
 	padding:0 26px 0 11px;
