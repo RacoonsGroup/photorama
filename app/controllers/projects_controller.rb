@@ -29,8 +29,9 @@ class ProjectsController < ApplicationController
   def new
     if current_user.project
       redirect_to root_url(:host => with_subdomain(current_user.project.subdomain))
+    else
+      render :layout => 'application'
     end
-    render :layout => 'application'
   end
 
   def create
