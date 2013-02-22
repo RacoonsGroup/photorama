@@ -1,0 +1,23 @@
+= form_for :user, :url => user_registration_path, :html => {:class => 'form-horizontal'} do |form|
+    fieldset
+      legend
+        span Регистрация
+
+      div.control-group
+        = form.label :email, 'Электронная почта', :class => 'control-label'
+        div.controls
+          = form.text_field :email
+
+      div.control-group
+        = form.label :password, 'Пароль', :class => 'control-label'
+        div.controls
+          = form.password_field :password
+
+      div.control-group
+        = form.label :password_confirmation, 'Пароль еще раз', :class => 'control-label'
+        div.controls
+          = form.password_field :password_confirmation
+
+      div.control-group
+        div.controls
+          = form.submit 'Зарегистрироваться', :class => "btn btn-primary"
