@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-  Template.create([{name: 'Default', layout_name: 'default'}, {name: 'Red', layout_name: 'red'}])
+  Template.create([{name: 'Default', layout_name: 'default'}, {name: 'Red', layout_name: 'red'}, {name: 'GrayRed', layout_name: 'gray_red'}])
