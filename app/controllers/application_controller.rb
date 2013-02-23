@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def load_template
+    project = Project.where(subdomain:request.subdomain).first
+    if project.template
+      project.template.layout_name
+    else
+      'default'
+    end
+  end
+
   private
 
     def users_layout

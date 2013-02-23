@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!, :except => :show
-  layout 'default'
+  layout :load_template
 
   def show
     @project = Project.where(subdomain:request.subdomain).first
@@ -15,14 +15,6 @@ class ProjectsController < ApplicationController
 
     unless @project
       redirect_to root_url
-    end
-
-    if @project.template_id
-      @templates.each do |template|
-        if template.id == @project.template_id
-          render :layout => template.layout_name
-        end
-      end
     end
   end
 
