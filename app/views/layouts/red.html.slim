@@ -25,9 +25,7 @@ html
                 nav#main_menu
                   .menu_wrap
                     ul.nav
-                      li
-                        a href="index.php"
-                          = t(:main_page)
+                      = render partial: 'partial/menu'
     .page_container
       .breadcrumb
         .wrap

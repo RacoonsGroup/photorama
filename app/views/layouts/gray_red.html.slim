@@ -32,9 +32,7 @@ html
                   span.icon-bar
                 .nav-collapse.nav-collapse_.collapse
                   ul.nav.sf-menu
-                    li.active
-                      a href="index.html"
-                       = t(:main_page)
+                    = render partial: 'partial/menu'
     .bg-content
       #content.content-extra
         .container

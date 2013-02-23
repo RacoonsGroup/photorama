@@ -23,9 +23,7 @@ html
             | grapher
           .nav-collapse
             ul.nav.pull-right
-              li.active
-                a href="index.php"
-                  = t(:main_page)
+              = render partial: 'partial/menu'
     .container
       hr
       .row
