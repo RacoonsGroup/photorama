@@ -5,8 +5,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.where(subdomain:request.subdomain).first
-    @templates = Template.all
     @menu = @project.page_modules
+    @color_schemes = ColorScheme.all
 
     if current_user && current_user.project.subdomain == request.subdomain
       @admin_panel = true
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     redirect_to root_url(:host => with_subdomain(@project.subdomain))
   end
 
-  def change_template
+  def change_style
     @project = Project.where(subdomain:request.subdomain).first
     @project.update_attributes(params[:project])
     if @project.save

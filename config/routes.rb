@@ -12,5 +12,5 @@ PhotoRama::Application.routes.draw do
   end
   root to: 'welcome#index'
 
-  put '/change_template' => 'projects#change_template'
+  put '/change_style' => 'projects#change_style'
 end

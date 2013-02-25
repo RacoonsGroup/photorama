@@ -8,10 +8,11 @@ html
       = stylesheet_link_tag    "control_panel", :media => "all"
       = javascript_include_tag "control_panel"
     = csrf_meta_tags
-  body
+    = render partial: 'partial/red/color_scheme'
+  body.bg_color1
     -if @admin_panel
       = render partial: 'partial/control_panel'
-    .header
+    .header.bg_color3.border_color1
       .wrap
         .navbar.navbar_.clearfix
           .container
@@ -26,8 +27,8 @@ html
                   .menu_wrap
                     ul.nav
                       = render partial: 'partial/menu'
-    .page_container
-      .breadcrumb
+    .page_container.bg_color3
+      .breadcrumb.bg_color2
         .wrap
           .container
             | Главная / Какая-то страница
@@ -37,7 +38,7 @@ html
             .span12
               = yield
     #footer
-      .footer_bottom
+      .footer_bottom.bg_color1
         .wrap
           .container
             .row
@@ -45,14 +46,13 @@ html
                 .foot_logo
                   a href="index.html"
                     = image_tag 'red/foot_logo.png'
-                .copyright © Сайт сделан при помощи сервиса ФОТОРАМА.
               .span7
                 .foot_right_block
-                  .clear
-                  .clear
                   .foot_menu
                     ul
                       li
                         a href="index.php"
                           = t(:main_page)
+
+                  .copyright © Сайт сделан при помощи сервиса ФОТОРАМА.
 

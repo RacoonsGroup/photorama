@@ -1,8 +1,9 @@
 # encoding=utf-8
 class Project < ActiveRecord::Base
-  attr_accessible :subdomain, :title, :template_id
+  attr_accessible :subdomain, :title, :template_id, :color_scheme_id
   belongs_to :user
   belongs_to :template
+  belongs_to :color_scheme
 
   has_many :page_modules
 

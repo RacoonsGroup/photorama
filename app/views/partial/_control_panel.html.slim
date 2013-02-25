@@ -2,8 +2,9 @@
   .container
     .row
       .span8
-        = form_tag({:controller => 'projects', :action => 'change_template'}, :method => 'put') do
+        = form_tag({:controller => 'projects', :action => 'change_style'}, :method => 'put') do
           = select(:project, :template_id, options_for_select(@templates.collect {|p| [ p.name, p.id, {'data-image' => p.thumbnail.thumb} ] }))
+          = select(:project, :color_scheme_id, options_for_select(@color_schemes.collect {|p| [ p.name, p.id ] }))
           = submit_tag
       .span4
         = form_for :page_modules, url: page_modules_path do |add_module|
@@ -11,3 +12,4 @@
           = add_module.text_field :slug
           = add_module.select :module_type, PageModule::TYPES
           = add_module.submit
+          = submit_tag
