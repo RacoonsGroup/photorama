@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.where(subdomain:request.subdomain).first
+    @templates = Template.all
     @menu = @project.page_modules
     @color_schemes = ColorScheme.all
 
