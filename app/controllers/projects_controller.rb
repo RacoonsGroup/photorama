@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.where(subdomain:request.subdomain).first
     @templates = Template.all
+    @menu = @project.page_modules
 
     if current_user && current_user.project.subdomain == request.subdomain
       @admin_panel = true
