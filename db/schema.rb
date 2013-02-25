@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221124135) do
+ActiveRecord::Schema.define(:version => 20130225113605) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20130221124135) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "page_modules", :force => true do |t|
+    t.string   "anchor"
+    t.string   "slug"
+    t.integer  "project_id"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "page_modules", ["project_id"], :name => "index_page_modules_on_project_id"
+
   create_table "projects", :force => true do |t|
     t.string   "subdomain"
     t.string   "title"
@@ -57,6 +68,15 @@ ActiveRecord::Schema.define(:version => 20130221124135) do
 
   add_index "projects", ["subdomain"], :name => "index_projects_on_subdomain", :unique => true
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+
+  create_table "static_page_attrs", :force => true do |t|
+    t.text     "content"
+    t.integer  "static_page_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "static_page_attrs", ["static_page_id"], :name => "index_static_page_attrs_on_static_page_id"
 
   create_table "templates", :force => true do |t|
     t.string   "name"
