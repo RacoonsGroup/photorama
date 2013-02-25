@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :template
 
+  has_many :page_modules
+
   validates :title, :subdomain, presence: true
   validates :title, :subdomain, length: { minimum: 2 }
   validates :subdomain, uniqueness: true
