@@ -8,6 +8,7 @@ PhotoRama::Application.routes.draw do
 
   constraints(Subdomain) do
     match '/' => 'projects#show'
+    resources :page_modules
   end
   root to: 'welcome#index'
 
