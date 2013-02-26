@@ -4,7 +4,7 @@ html
     title PhotoRama
     = stylesheet_link_tag    "gray_red/gray_red", :media => "all"
     = javascript_include_tag "gray_red/gray_red"
-    -if @admin_panel
+    -if @templates
       = stylesheet_link_tag    "control_panel", :media => "all"
       = javascript_include_tag "control_panel"
     = csrf_meta_tags
@@ -15,7 +15,7 @@ html
       jQuery('.magnifier').touchTouch();
       });
   body
-    -if @admin_panel
+    -if @templates
       = render partial: 'partial/control_panel'
     /! ============================== header =================================
     header

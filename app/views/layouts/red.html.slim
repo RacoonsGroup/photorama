@@ -4,13 +4,13 @@ html
     title PhotoRama
     = stylesheet_link_tag    "red/red", :media => "all"
     = javascript_include_tag "red/red"
-    -if @admin_panel
+    -if @templates
       = stylesheet_link_tag    "control_panel", :media => "all"
       = javascript_include_tag "control_panel"
     = csrf_meta_tags
     = render partial: 'partial/red/color_scheme'
   body.bg_color1
-    -if @admin_panel
+    -if @templates
       = render partial: 'partial/control_panel'
     .header.bg_color3.border_color1
       .wrap
