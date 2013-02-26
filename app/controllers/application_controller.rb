@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   def template_variables_load
     @project = Project.where(subdomain:request.subdomain).first
     @menu = @project.page_modules
+    params[:id] ||= 'main'
 
     if current_user && @project.user_id == current_user.id
       @templates = Template.all
