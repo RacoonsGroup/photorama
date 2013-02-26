@@ -1,20 +1,10 @@
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!, :except => :show
+  before_filter :template_variables_load, only: :show
   layout :load_template
 
   def show
-    @project = Project.where(subdomain:request.subdomain).first
-    @templates = Template.all
-    @menu = @project.page_modules
-    @color_schemes = ColorScheme.all
-
-    if current_user && current_user.project.subdomain == request.subdomain
-      @admin_panel = true
-    else
-      @admin_panel = false
-    end
-
     unless @project
       redirect_to root_url
     end

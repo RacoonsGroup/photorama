@@ -18,6 +18,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def template_variables_load
+    @project = Project.where(subdomain:request.subdomain).first
+    @menu = @project.page_modules
+    @color_schemes = ColorScheme.all
+
+    if @project.user_id == current_user.id && current_user
+      @templates = Template.all
+    end
+  end
+
   private
 
     def users_layout
