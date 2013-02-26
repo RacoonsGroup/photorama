@@ -1,0 +1,8 @@
+|Привет, 
+- if current_user.full_name
+  = current_user.full_name
+- else
+  = current_user.email
+|!
+br
+= link_to "Перейти к управлению свои сайтом!", root_url(:host => with_subdomain(current_user.project.subdomain))

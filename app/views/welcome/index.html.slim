@@ -3,6 +3,9 @@
     .span6
 
     .span6
-      = render partial: 'partial/enter_form'
-      hr
-      = render partial: 'partial/register_form'
+      - if current_user
+        = render partial: 'partial/logged_user_links'
+      - else
+        = render partial: 'partial/enter_form'
+        hr
+        = render partial: 'partial/register_form'
