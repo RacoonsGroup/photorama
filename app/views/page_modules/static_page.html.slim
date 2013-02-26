@@ -12,8 +12,18 @@
         = form.submit
         = form.button t(:cancel), class: 'cancel-redactor'
 - else
-  h1 Тест
-  = form_for :static_page_attr, url: static_pages_path do |form|
-    = form.text_area :content, class: 'redactor'
-    = form.hidden_field :static_page_id, value: @module.id
-    = form.submit
+  div.page-content.tgl-block
+    - if @templates
+      div.edit-icon
+        i.icon-pencil
+    h1 =@module.anchor
+    - fish_text = "Это созданная вами страничка \"#{@module.anchor}\" Вы можете начать изменять её, просто кликнув по этому тексту. Вашему вниманию откроется редактор, в котором вы сможете ввести свой текст, добавить картинки на страницу, и сделать её такой какой хотите видеть сами."
+    p =fish_text
+  - if @templates
+    div.redactor-block.tgl-block
+      = form_for :static_page_attr, url: static_pages_path do |form|
+        = form.text_area :content, class: 'redactor', value: fish_text
+        = form.hidden_field :static_page_id, value: @module.id
+        = form.submit
+        = form.button t(:cancel), class: 'cancel-redactor'
+
