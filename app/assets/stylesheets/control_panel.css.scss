@@ -75,3 +75,13 @@ img.fnone{float:none !important}
 .redactor-block {
   display: none;
 }
+.edit-icon {
+  float: right;
+  border: 1px solid black;
+  border-radius:3px;
+  padding: 2px 4px;
+  visibility: hidden;
+}
+div.page-content:hover .edit-icon {
+  visibility: visible;
+}
