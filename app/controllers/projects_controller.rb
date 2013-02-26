@@ -1,3 +1,4 @@
+# encoding=utf-8
 class ProjectsController < ApplicationController
 
   before_filter :authenticate_user!, :except => :show
@@ -8,6 +9,9 @@ class ProjectsController < ApplicationController
     unless @project
       redirect_to root_url
     end
+    @module = @project.page_modules.find_by_slug(params[:id])
+    @page = MainPageAttr.find_by_main_page_id(@module.id)
+    render template: 'page_modules/main_page.html.slim'
   end
 
   def new
@@ -21,6 +25,8 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.build_project(params[:project])
     @project.save
+    @mainpage = MainPage.new(slug: 'main', anchor: 'Главная', project_id: @project.id)
+    @mainpage.save
     redirect_to root_url(:host => with_subdomain(@project.subdomain))
   end
 
