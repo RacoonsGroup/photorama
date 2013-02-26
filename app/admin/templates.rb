@@ -1,4 +1,6 @@
 ActiveAdmin.register Template do
+  menu :priority => 5
+
   form do |f|
     f.inputs :Templates do
       f.input :name
