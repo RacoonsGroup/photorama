@@ -2,9 +2,16 @@ class PageModulesController < ApplicationController
   before_filter :authenticate_user!, except: :show
   before_filter :template_variables_load, only: :show
   layout :load_template
+
   def create
-    new_page = params[:page_modules][:module_type].constantize.create slug: params[:page_modules][:slug], anchor: params[:page_modules][:anchor], project_id: current_user.project.id
-    redirect_to page_module_url(id: new_page.slug, host: with_subdomain(current_user.project.subdomain))
+    new_page = params[:page_modules][:module_type].constantize.new(slug: params[:page_modules][:slug], anchor: params[:page_modules][:anchor], project_id: current_user.project.id)
+
+    if new_page.save
+      redirect_to page_module_url(id: new_page.slug, host: with_subdomain(current_user.project.subdomain))
+    else
+      flash[:error] = t(:new_page_not_created)
+      redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+    end
   end
 
   def show
