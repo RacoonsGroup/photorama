@@ -1,3 +1,7 @@
+/*
+*= require redactor-rails
+*/
+
 //Dropdown selectbox with Images
 .borderRadius{-moz-border-radius:5px; border-radius:5px; }
 .borderRadiusTp{-moz-border-radius:5px 5px 0 0; border-radius:5px 5px 0 0;}
@@ -67,4 +71,7 @@ img.fnone{float:none !important}
 
 .control-panel {
   background: gray;
+}
+.redactor-block {
+  display: none;
 }

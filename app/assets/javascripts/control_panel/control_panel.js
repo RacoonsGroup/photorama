@@ -5,4 +5,9 @@ jQuery(function($) {
     } catch(e) {
         alert(e.message);
     }
+
+    $('.page-content, .cancel-redactor').on("click", function(){
+      $('.tgl-block').toggle();
+      return false;
+    });
 });
