@@ -1,4 +1,6 @@
 PhotoRama::Application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -9,6 +11,7 @@ PhotoRama::Application.routes.draw do
   constraints(Subdomain) do
     match '/' => 'projects#show'
     resources :page_modules
+    resources :static_pages
   end
   root to: 'welcome#index'
 
