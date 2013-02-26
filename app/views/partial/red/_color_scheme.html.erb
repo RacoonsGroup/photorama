@@ -1,38 +1,43 @@
 <style>
-<%= colors = @project.color_scheme %>
+<%- if @project.color_scheme %>
+<%-  colors = @project.color_scheme %>
+<%- else %>
+<%-  colors = ColorScheme.first %>
+<%- end %>
+
 .bg_color1 {
-    background-color: <%= colors.color1 %>;
-    color: <%= colors.color6 %>;
+  background-color: <%= colors.color1 %>;
+  color: <%= colors.color6 %>;
 }
 .bg_color1 a {
-    color: <%= colors.color6 %> !important;
+  color: <%= colors.color6 %> !important;
 }
 .bg_color1 a:hover {
-    color: <%= colors.color3 %> !important;
+  color: <%= colors.color3 %> !important;
 }
 
 .bg_color2 {
-    background-color: <%= colors.color2 %>;
-    color: <%= colors.color3 %>;
+  background-color: <%= colors.color2 %>;
+  color: <%= colors.color3 %>;
 }
 
 .bg_color3 {
-    background-color: <%= colors.color3 %>;
-    color: <%= colors.color6 %>;
-    border-color: <%= colors.color1 %>;
+  background-color: <%= colors.color3 %>;
+  color: <%= colors.color6 %>;
+  border-color: <%= colors.color1 %>;
 }
 .bg_color3 h1, .bg_color3 h2, .bg_color3 h3, .bg_color3 h4, .bg_color3 h5, .bg_color3 h6, .bg_color3 a {
-    color: <%= colors.color1 %> !important;
+  color: <%= colors.color1 %> !important;
 }
 .bg_color3 a:hover {
-    color: <%= colors.color4 %> !important;
+  color: <%= colors.color4 %> !important;
 }
 
 .bg_color4 {
-    background-color: <%= colors.color4 %>;
+  background-color: <%= colors.color4 %>;
 }
 
 .bg_color5 {
-    background-color: <%= colors.color5 %>;
+  background-color: <%= colors.color5 %>;
 }
 </style>
