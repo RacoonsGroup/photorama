@@ -1,7 +1,7 @@
 jQuery(function($) {
     //Custom select box with images
     try {
-        $("#project_template_id").msDropDown({showIcon: true});
+        $("#project_template_id, #project_background_id").msDropDown({showIcon: true});
     } catch(e) {
         alert(e.message);
     }

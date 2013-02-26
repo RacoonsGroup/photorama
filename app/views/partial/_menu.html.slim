@@ -3,4 +3,4 @@ li.active
    = t(:main_page)
 - @menu.each do |menu|
   li
-    = link_to menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(current_user.project.subdomain))
+    = link_to menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(@project.subdomain))

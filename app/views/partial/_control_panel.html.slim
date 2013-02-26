@@ -4,6 +4,7 @@
       .span8
         = form_tag({:controller => 'projects', :action => 'change_style'}, :method => 'put') do
           = select(:project, :template_id, options_for_select(@templates.collect {|p| [ p.name, p.id, {'data-image' => p.thumbnail.thumb} ] }))
+          = select(:project, :background_id, options_for_select(@backgrounds.collect {|p| [ p.name, p.id, {'data-image' => p.background} ] }), {:include_blank => 'Не использовать'} )
           = select(:project, :color_scheme_id, options_for_select(@color_schemes.collect {|p| [ p.name, p.id ] }))
           = submit_tag
       .span4

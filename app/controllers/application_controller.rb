@@ -22,8 +22,9 @@ class ApplicationController < ActionController::Base
     @project = Project.where(subdomain:request.subdomain).first
     @menu = @project.page_modules
 
-    if @project.user_id == current_user.id && current_user
+    if current_user && @project.user_id == current_user.id
       @templates = Template.all
+      @backgrounds = Background.all
       @color_schemes = ColorScheme.all
     end
   end

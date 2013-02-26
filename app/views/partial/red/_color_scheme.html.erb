@@ -1,4 +1,5 @@
 <style>
+
 <%- if @project.color_scheme %>
 <%-  colors = @project.color_scheme %>
 <%- else %>
@@ -40,4 +41,11 @@
 .bg_color5 {
   background-color: <%= colors.color5 %>;
 }
+
+<%- if @project.background %>
+.bg_color3 {
+    background-image: url('<%= @project.background.background %>');
+}
+<%- end %>
+
 </style>
