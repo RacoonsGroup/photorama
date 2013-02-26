@@ -1,4 +1,5 @@
 class PageModulesController < ApplicationController
+  before_filter :authenticate_user!, except: :show
   before_filter :template_variables_load, only: :show
   layout :load_template
   def create
