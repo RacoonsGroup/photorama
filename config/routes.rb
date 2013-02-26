@@ -12,6 +12,7 @@ PhotoRama::Application.routes.draw do
     match '/' => 'projects#show'
     resources :page_modules
     resources :static_pages
+    resources :main_pages, only: [:update, :create]
   end
   root to: 'welcome#index'
 
