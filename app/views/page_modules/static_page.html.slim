@@ -1,0 +1,19 @@
+- if @page
+  div.page-content.tgl-block
+    - if @templates
+      div.edit-icon
+        i.icon-pencil
+    = raw @page.content
+  - if @templates
+    div.redactor-block.tgl-block
+      = form_for @page, url: static_page_path, method: :put do |form|
+        = form.text_area :content, class: 'redactor'
+        = form.hidden_field :static_page_id
+        = form.submit
+        = form.button t(:cancel), class: 'cancel-redactor'
+- else
+  h1 Тест
+  = form_for :static_page_attr, url: static_pages_path do |form|
+    = form.text_area :content, class: 'redactor'
+    = form.hidden_field :static_page_id, value: @module.id
+    = form.submit
