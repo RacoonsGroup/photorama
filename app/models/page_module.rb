@@ -11,6 +11,5 @@ class PageModule < ActiveRecord::Base
 
   validates :anchor,
             presence: true
-
-  TYPES = [['Статическая страница', 'StaticPage']]
+  TYPES = [['Статическая страница', 'StaticPage'], ['Галлерея', 'Gallery']]
 end
