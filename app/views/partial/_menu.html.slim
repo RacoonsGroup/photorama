@@ -1,5 +1,5 @@
 li.active
-  = link_to t(:main_page), root_url(host: with_subdomain(current_user.project.subdomain))
+  = link_to t(:main_page), root_url(host: with_subdomain(@project.subdomain))
 - @menu.each do |menu|
   - unless menu.slug == 'main'
     li
