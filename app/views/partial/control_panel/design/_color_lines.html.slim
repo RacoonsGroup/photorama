@@ -1,0 +1,11 @@
+button.prev_color Влево
+button.next_color Вправо
+div
+    ul#color_list.select_to_list(data-target="#project_color_scheme_id")
+      - @color_schemes.each do |item|
+        li(data-value="#{item.id}")
+            div(style="background-color: #{item.color1};")
+            div(style="background-color: #{item.color2};")
+            div(style="background-color: #{item.color3};")
+            div(style="background-color: #{item.color4};")
+            div(style="background-color: #{item.color5};")

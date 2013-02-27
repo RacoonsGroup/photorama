@@ -15,12 +15,7 @@
 
         .tab-content
           .tab-pane.active#design
-            = form_tag({:controller => 'projects', :action => 'change_style'}, :method => 'put') do
-              = select(:project, :template_id, @templates.collect { |p| [ p.name, p.id, {'data-image' => p.thumbnail.thumb} ] })
-              = select(:project, :background_id, options_for_select(@backgrounds.collect {|p| [ p.name, p.id, {'data-image' => p.background} ] }), {:include_blank => 'Не использовать'} )
-              /= select(:project, :color_scheme_id, options_for_select(@color_schemes.collect {|p| [ p.name, p.id ] }))
-              = select(:project, :color_scheme_id, @color_schemes.collect { |p| [ p.name, p.id, {'data-color1' => p.color1,'data-color2' => p.color2,'data-color3' => p.color1,'data-color3' => p.color1,'data-color4' => p.color4,'data-color5' => p.color5} ] })
-              = submit_tag
+            = render partial: 'partial/control_panel/design'
           .tab-pane#modules
             = simple_form_for :page_modules, url: page_modules_path do |add_module|
               = add_module.text_field :anchor

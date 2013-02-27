@@ -1,0 +1,10 @@
+button.prev_bg Влево
+button.next_bg Вправо
+div
+    ul#background_list.select_to_list(data-target="#project_background_id")
+      li(data-value="0")
+        div
+          | Не использовать
+      - @backgrounds.each do |item|
+        li(data-value="#{item.id}")
+            div(style="background-image: url('#{item.background}');")

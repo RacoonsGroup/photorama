@@ -20,19 +20,19 @@ div.page-content:hover .edit-icon {
 }
 
 //Carousel
-#templates_list li {
-  line-height: 100px;
+.select_to_list li {
   padding: 20px;
+  line-height: 100px;
 }
-#templates_list li.active {
+#select_to_list li.active {
   background-color: red;
 }
-#color_list li {
-  width: 100px;
-  height: 80px;
-}
 #color_list div {
-  width: 20px;
-  height: 80px;
+  width: 32px;
+  height: 100px;
   display: inline-block;
+}
+#background_list div {
+  width: 160px;
+  height: 100px;
 }
