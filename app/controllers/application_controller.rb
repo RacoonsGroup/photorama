@@ -19,8 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def template_variables_load
-    @project = Project.where(subdomain:request.subdomain).first
-    @menu = @project.page_modules
+    @project = Project.find_by_subdomain(request.subdomain)
+    unless @project
+      redirect_to root_url(:host => with_subdomain(false))
+    end
+    @menu = @project.page_modules if @project
     params[:id] ||= 'main'
 
     if current_user && @project.user_id == current_user.id
