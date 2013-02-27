@@ -14,6 +14,21 @@ class PageModulesController < ApplicationController
     end
   end
 
+  def delete_page
+    PageModule.find(params[:page_modules][:id]).update_attributes(deleted: true, deleted_at: Time.now)
+    redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+  end
+
+  def retrieve_page
+    PageModule.find(params[:page_modules][:id]).update_attributes(deleted: false)
+    redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+  end
+
+  def update_page
+    PageModule.find(params[:page_modules][:id]).update_attributes(params[:page_modules].delete_if{|key, value| value.blank? })
+    redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+  end
+
   def show
     @module = @project.page_modules.find_by_slug(params[:id])
     @page = (@module.type + 'Attr').constantize
