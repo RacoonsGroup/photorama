@@ -9,6 +9,9 @@
           li
             a href="#modules" data-toggle="tab"
               | Модули
+          li
+            a href="#page_control" data-toggle="tab"
+              | Управление страницами
 
         .tab-content
           .tab-pane.active#design
@@ -24,3 +27,22 @@
               = add_module.text_field :slug
               = add_module.input :module_type, collection: PageModule::TYPES
               = add_module.submit
+          .tab-pane#page_control
+            .row
+              .span4
+                |Удаление
+                = simple_form_for :page_modules, url: delete_page_path do |add_module|
+                  = add_module.input :id, collection: @project.page_modules.not_deleted_pages.collect {|p| [ p.anchor, p.id ] }
+                  = add_module.submit 'Delete'
+              .span4
+                |Возвращение
+                = simple_form_for :page_modules, url: retrieve_page_path do |add_module|
+                  = add_module.input :id, collection: @project.page_modules.deleted_pages.collect {|p| [ p.anchor, p.id ] }
+                  = add_module.submit 'Retrieve page'
+              .span4
+                |Изменение параметров страницы
+                = simple_form_for :page_modules, url: update_page_path do |add_module|
+                  = add_module.input :id, collection: @project.page_modules.not_deleted_pages.collect {|p| [ p.anchor, p.id ] }
+                  = add_module.input :anchor
+                  = add_module.input :slug
+                  = add_module.submit 'Update page'

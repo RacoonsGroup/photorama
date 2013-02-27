@@ -1,6 +1,6 @@
 li.active
   = link_to t(:main_page), root_url(host: with_subdomain(@project.subdomain))
-- @menu.each do |menu|
+- @menu.not_deleted_pages.each do |menu|
   - unless menu.slug == 'main'
     li
       = link_to menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(@project.subdomain))
