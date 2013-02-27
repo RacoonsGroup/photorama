@@ -27,3 +27,12 @@ div.page-content:hover .edit-icon {
 #templates_list li.active {
   background-color: red;
 }
+#color_list li {
+  width: 100px;
+  height: 80px;
+}
+#color_list div {
+  width: 20px;
+  height: 80px;
+  display: inline-block;
+}
