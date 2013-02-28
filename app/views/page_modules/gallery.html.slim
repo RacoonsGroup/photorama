@@ -1,0 +1,8 @@
+- if @page
+  div.page-content.tgl-block
+    - if @templates
+      = link_to 'Add Album', new_page_module_album_path(@module.slug)
+  ul
+  - @page.albums.each do |album|
+    li
+      = link_to album.title,  page_module_album_path(id:album.id, page_module_id:@module.slug)
