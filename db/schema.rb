@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226135216) do
+ActiveRecord::Schema.define(:version => 20130226142431) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20130226135216) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "albums", :force => true do |t|
+    t.string   "title"
+    t.string   "desc"
+    t.integer  "order"
+    t.integer  "gallery_attr_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "albums", ["gallery_attr_id"], :name => "index_albums_on_gallery_attr_id"
+
   create_table "backgrounds", :force => true do |t|
     t.string   "name"
     t.string   "background"
@@ -66,6 +77,20 @@ ActiveRecord::Schema.define(:version => 20130226135216) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "galleries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "gallery_attrs", :force => true do |t|
+    t.integer  "gallery_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "gallery_attrs", ["gallery_id"], :name => "index_gallery_attrs_on_gallery_id"
+
   create_table "main_page_attrs", :force => true do |t|
     t.text     "content"
     t.boolean  "gallery_toggle"
@@ -75,6 +100,14 @@ ActiveRecord::Schema.define(:version => 20130226135216) do
   end
 
   add_index "main_page_attrs", ["main_page_id"], :name => "index_main_page_attrs_on_main_page_id"
+
+  create_table "main_sliders", :force => true do |t|
+    t.integer  "photo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "main_sliders", ["photo_id"], :name => "index_main_sliders_on_photo_id"
 
   create_table "page_modules", :force => true do |t|
     t.string   "anchor"
@@ -89,6 +122,19 @@ ActiveRecord::Schema.define(:version => 20130226135216) do
 
   add_index "page_modules", ["project_id"], :name => "index_page_modules_on_project_id"
   add_index "page_modules", ["slug"], :name => "index_page_modules_on_slug"
+
+  create_table "photos", :force => true do |t|
+    t.string   "title"
+    t.string   "desc"
+    t.integer  "album_id"
+    t.string   "file"
+    t.boolean  "album_wallpaper", :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
+  add_index "photos", ["album_wallpaper"], :name => "index_photos_on_album_wallpaper"
 
   create_table "projects", :force => true do |t|
     t.string   "subdomain"

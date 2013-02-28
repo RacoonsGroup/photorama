@@ -7,6 +7,9 @@ class PageModulesController < ApplicationController
     new_page = params[:page_modules][:module_type].constantize.new(slug: params[:page_modules][:slug], anchor: params[:page_modules][:anchor], project_id: current_user.project.id)
 
     if new_page.save
+      if params[:page_modules][:module_type] == 'Gallery'
+        GalleryAttr.create(:gallery_id => Gallery.last.id)
+      end
       redirect_to page_module_url(id: new_page.slug, host: with_subdomain(current_user.project.subdomain))
     else
       flash[:error] = t(:new_page_not_created)
