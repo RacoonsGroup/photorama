@@ -1,10 +1,5 @@
 jQuery(function($) {
 
-    $('ul.nav').sortable({
-        axis: 'x',
-        items: "> li.sortable_item"
-    })
-
     $('.add_item_to_menu').on('click', function() {
         //var template = $.get('/add_item_to_menu')
         //console.log(template)
@@ -30,7 +25,10 @@ jQuery(function($) {
         })
     })
 
-    $('#menu').sortable();
+    $('#menu').sortable({
+        axis: 'x',
+        items: "> li.sortable_item"
+    });
     $( "#menu" ).bind( "sortupdate", function(event, ui) {
         var result = $('#menu').sortable('toArray');
         var dataParams = {};
