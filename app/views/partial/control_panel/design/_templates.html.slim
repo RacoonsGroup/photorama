@@ -3,5 +3,9 @@ button.next_tpl Вправо
 div
     ul#templates_list.select_to_list(data-target="#project_template_id")
       - @templates.each do |item|
-        li(data-value="#{item.id}")
+        - if @project.template_id == item.id
+          li.active(data-value="#{item.id}")
+            img(src="#{item.thumbnail.thumb}" width="160px" height="100px")
+        - else
+          li(data-value="#{item.id}")
             img(src="#{item.thumbnail.thumb}" width="160px" height="100px")

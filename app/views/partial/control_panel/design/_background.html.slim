@@ -2,9 +2,14 @@ button.prev_bg Влево
 button.next_bg Вправо
 div
     ul#background_list.select_to_list(data-target="#project_background_id")
-      li(data-value="0")
+      - if @project.background_id == nil
+        - class_name = "active"
+      li(data-value="0" class=class_name)
         div
           | Не использовать
       - @backgrounds.each do |item|
-        li(data-value="#{item.id}")
-            div(style="background-image: url('#{item.background}');")
+        - class_name = nil
+        - if @project.background_id == item.id
+          - class_name = "active"
+        li(data-value="#{item.id}" class=class_name)
+          div(style="background-image: url('#{item.background}');")

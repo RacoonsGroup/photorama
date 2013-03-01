@@ -20,11 +20,14 @@ div.page-content:hover .edit-icon {
 }
 
 //Carousel
+#design_panel {
+  display: none;
+}
 .select_to_list li {
-  padding: 20px;
+  padding: 10px;
   line-height: 100px;
 }
-#select_to_list li.active {
+.select_to_list li.active {
   background-color: red;
 }
 #color_list div {
@@ -35,4 +38,6 @@ div.page-content:hover .edit-icon {
 #background_list div {
   width: 160px;
   height: 100px;
+  background-color: #ffffff;
+  text-align: center;
 }

@@ -1,8 +1,12 @@
-= form_tag({:controller => 'projects', :action => 'change_style'}, :method => 'put') do
+= form_tag({:controller => 'projects', :action => 'change_style'}, :method => 'put', :id => 'design_panel') do
   = collection_select(:project, :template_id, @templates, :id, :name)
   = collection_select(:project, :background_id, @backgrounds, :id, :name, {include_blank: true})
   = collection_select(:project, :color_scheme_id, @color_schemes, :id, :name)
   = submit_tag
-= render partial: 'partial/control_panel/design/templates'
-= render partial: 'partial/control_panel/design/color_lines'
-= render partial: 'partial/control_panel/design/background'
+.row
+  .span4
+    = render partial: 'partial/control_panel/design/templates'
+  .span4
+    = render partial: 'partial/control_panel/design/color_lines'
+  .span4
+    = render partial: 'partial/control_panel/design/background'
