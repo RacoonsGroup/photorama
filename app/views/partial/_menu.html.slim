@@ -1,8 +1,8 @@
 - @menu.not_deleted_pages.each do |menu|
   - if menu.slug == 'main'
-    = content_tag(:li, link_to(menu.anchor, root_url(host: with_subdomain(@project.subdomain))), id: "menu_#{menu.id}", class:'sortable_item')
+    = content_tag(:li, (@templates ? content_tag(:i, '',class:'icon-move menu-move') : '')+link_to(menu.anchor, root_url(host: with_subdomain(@project.subdomain))), id: "menu_#{menu.id}")
   - else
-    = content_tag(:li, link_to(menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(@project.subdomain))), id: "menu_#{menu.id}", class:'sortable_item')
+    = content_tag(:li, (@templates ? content_tag(:i, '',class:'icon-move menu-move') : '')+link_to(menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(@project.subdomain))), id: "menu_#{menu.id}")
 - if @templates
   li.add_item_to_menu
     span
