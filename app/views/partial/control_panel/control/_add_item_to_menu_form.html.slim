@@ -1,0 +1,5 @@
+= simple_form_for :page_modules, url: page_modules_path do |add_module|
+  = add_module.text_field :anchor
+  = add_module.text_field :slug
+  = add_module.input :module_type, collection: PageModule::TYPES
+  = add_module.submit

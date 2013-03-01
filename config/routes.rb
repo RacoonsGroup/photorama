@@ -24,4 +24,5 @@ PhotoRama::Application.routes.draw do
   root to: 'welcome#index'
 
   put '/change_style' => 'projects#change_style'
+  get '/add_item_to_menu' => 'projects#add_item_to_menu'
 end

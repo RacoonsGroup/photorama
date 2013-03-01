@@ -1,6 +1,12 @@
-/*
-*= require redactor-rails
-*/
+//= require redactor-rails
+//= require jquery.ui.all
+
+.add_item_to_menu span {
+  border: 1px dashed #000;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
 .control-panel {
   background: gray;

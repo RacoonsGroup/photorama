@@ -1,4 +1,5 @@
 .control-panel
+  #dialog_box
   .container
     .row
       .span12
@@ -7,21 +8,12 @@
             a href="#design" data-toggle="tab"
               | Дизайн
           li
-            a href="#modules" data-toggle="tab"
-              | Модули
-          li
             a href="#page_control" data-toggle="tab"
               | Управление страницами
 
         .tab-content
           .tab-pane.active#design
             = render partial: 'partial/control_panel/design'
-          .tab-pane#modules
-            = simple_form_for :page_modules, url: page_modules_path do |add_module|
-              = add_module.text_field :anchor
-              = add_module.text_field :slug
-              = add_module.input :module_type, collection: PageModule::TYPES
-              = add_module.submit
           .tab-pane#page_control
             .row
               .span4

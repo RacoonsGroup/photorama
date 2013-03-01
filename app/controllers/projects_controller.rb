@@ -34,4 +34,8 @@ class ProjectsController < ApplicationController
       redirect_to root_url(:host => with_subdomain(@project.subdomain))
     end
   end
+
+  def add_item_to_menu
+    render partial: 'partial/control_panel/control/add_item_to_menu_form'
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226142431) do
+ActiveRecord::Schema.define(:version => 20130301094604) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20130226142431) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "deleted",    :default => false
     t.datetime "deleted_at"
+    t.integer  "position",   :default => 1
   end
 
   add_index "page_modules", ["project_id"], :name => "index_page_modules_on_project_id"
