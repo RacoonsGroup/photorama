@@ -1,7 +1,7 @@
 # encoding=utf-8
 class PageModule < ActiveRecord::Base
   belongs_to :project
-  attr_accessible :anchor, :slug, :type, :project_id, :deleted, :deleted_at
+  attr_accessible :anchor, :slug, :type, :project_id, :deleted, :deleted_at, :order
 
   validates :slug, format: { with: /^[a-z0-9][a-z0-9\-]*[a-z0-9]$/,
                                   message: "в slug страницы не должно быть спец.символов" }
@@ -15,4 +15,5 @@ class PageModule < ActiveRecord::Base
 
   scope :deleted_pages, -> { where(deleted:true) }
   scope :not_deleted_pages, -> { where(deleted:false) }
+  scope :by_order, -> {order('"order"')}
 end
