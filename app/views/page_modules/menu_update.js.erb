@@ -1,0 +1,5 @@
+<% if flash[:error] %>
+  $('body').prepend('<% flash[:error] %>');
+<% end %>
+$('#menu').removeClass('menu_update');
+$('#menu').sortable('enable');

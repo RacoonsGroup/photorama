@@ -30,6 +30,28 @@ jQuery(function($) {
         })
     })
 
+    $('#menu').sortable();
+    $( "#menu" ).bind( "sortupdate", function(event, ui) {
+        var result = $('#menu').sortable('toArray');
+        var dataParams = {};
+        var id;
+        for(var i=0;i<result.length;i++){
+            id = result[i].split('_')[1];
+            dataParams[id] = {order: i};
+        }
+        $.ajax({
+           type: "POST",
+           url: "/page_modules/menu_update",
+           data: {
+                menu_order: dataParams
+           },
+           beforeSend: function(){
+            $('#menu').addClass('menu_update');
+            $('#menu').sortable('disable');
+           }
+         });
+    });
+
     $('.page-content, .cancel-redactor').on("click", function(){
       $('.tgl-block').toggle();
       return false;
