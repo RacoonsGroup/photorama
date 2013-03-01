@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     unless @project
       redirect_to root_url(:host => with_subdomain(false))
     end
-    @menu = @project.page_modules if @project
+    @menu = @project.page_modules.by_order if @project
     params[:id] ||= 'main'
 
     if current_user && @project.user_id == current_user.id

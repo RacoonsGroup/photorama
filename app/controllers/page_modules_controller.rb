@@ -2,6 +2,7 @@ class PageModulesController < ApplicationController
   before_filter :authenticate_user!, except: :show
   before_filter :template_variables_load, only: :show
   layout :load_template
+  respond_to :js, only: :menu_update
 
   def create
     new_page = params[:page_modules][:module_type].constantize.new(slug: params[:page_modules][:slug], anchor: params[:page_modules][:anchor], project_id: current_user.project.id)
@@ -30,6 +31,12 @@ class PageModulesController < ApplicationController
   def update_page
     PageModule.find(params[:page_modules][:id]).update_attributes(params[:page_modules].delete_if{|key, value| value.blank? })
     redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+  end
+
+  def menu_update
+    unless PageModule.update(params[:menu_order].keys, params[:menu_order].values)
+      flash[:error] = t(:page_order_not_updated)
+    end
   end
 
   def show
