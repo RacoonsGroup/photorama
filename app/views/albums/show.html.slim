@@ -1,0 +1,9 @@
+= link_to "Add photos", new_page_module_album_photo_path(page_module_id: @module.id, album_id: @album.id)
+
+h1 Photos
+
+- @photos.each do |photo|
+  .span3
+    h3
+      = photo.title
+    = link_to_photo photo

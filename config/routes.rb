@@ -11,7 +11,9 @@ PhotoRama::Application.routes.draw do
   constraints(Subdomain) do
     match '/' => 'projects#show'
     resources :page_modules do
-      resources :albums
+      resources :albums do
+        resources :photos
+      end
     end
     post 'page_modules/delete_page' => 'page_modules#delete_page', as: :delete_page
     post 'page_modules/retrieve_page' => 'page_modules#retrieve_page', as: :retrieve_page
