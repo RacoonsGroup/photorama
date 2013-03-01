@@ -12,6 +12,9 @@ class AlbumsController < ApplicationController
   end
 
   def show
+    @module = @project.page_modules.find_by_slug(params[:page_module_id])
+    @album = Album.find(params[:id])
+    @photos = @album.photos
   end
 
   def new
