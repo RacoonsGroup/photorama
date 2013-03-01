@@ -1,10 +1,9 @@
-li.sortable_item.active
-  = link_to t(:main_page), root_url(host: with_subdomain(@project.subdomain))
 - @menu.not_deleted_pages.each do |menu|
-  - unless menu.slug == 'main'
-    li.sortable_item
-      = link_to menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(@project.subdomain))
-- if current_user && @project.user_id == current_user.id
+  - if menu.slug == 'main'
+    = content_tag(:li, link_to(menu.anchor, root_url(host: with_subdomain(@project.subdomain))), id: "menu_#{menu.id}", class:'sortable_item')
+  - else
+    = content_tag(:li, link_to(menu.anchor, page_module_url(id: menu.slug, host: with_subdomain(@project.subdomain))), id: "menu_#{menu.id}", class:'sortable_item')
+- if @templates
   li.add_item_to_menu
     span
       i.icon-plus
