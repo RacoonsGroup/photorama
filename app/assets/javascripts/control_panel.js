@@ -4,3 +4,4 @@
 //= require redactor-rails
 //= require redactor-rails/ru
 //= require jquery.ui.all
+//= require fancybox
