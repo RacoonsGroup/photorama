@@ -2,8 +2,4 @@
 
 h1 Photos
 
-- @photos.each do |photo|
-  .span3
-    h3
-      = photo.title
-    = link_to_photo photo
+= render 'partial/photos_gallery_fancybox',photos: @photos
