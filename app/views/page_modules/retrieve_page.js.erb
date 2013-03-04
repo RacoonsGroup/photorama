@@ -1,0 +1,5 @@
+<% if flash[:error] %>
+  $('body').prepend('<% flash[:error] %>');
+<% end %>
+$('#deleted_pages, #visible_pages').removeClass('menu_update');
+$('#deleted_pages, #visible_pages').sortable('enable');
