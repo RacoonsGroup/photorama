@@ -17,15 +17,15 @@
           .tab-pane#page_control
             .row
               .span4
-                |Удаление
-                = simple_form_for :page_modules, url: delete_page_path do |add_module|
-                  = add_module.input :id, collection: @project.page_modules.not_deleted_pages.collect {|p| [ p.anchor, p.id ] }
-                  = add_module.submit 'Delete'
+                |Страницы сайта
+                ul#visible_pages.connectedSortable data-type="visible"
+                  -@project.page_modules.not_deleted_pages.each do |d|
+                    =content_tag(:li, content_tag(:i, '',class:'icon-move menu-move')+d.anchor, id: "elem_#{d.id}")
               .span4
-                |Возвращение
-                = simple_form_for :page_modules, url: retrieve_page_path do |add_module|
-                  = add_module.input :id, collection: @project.page_modules.deleted_pages.collect {|p| [ p.anchor, p.id ] }
-                  = add_module.submit 'Retrieve page'
+                |Удаленные страницы
+                ul#deleted_pages.connectedSortable data-type="deleted"
+                  -@project.page_modules.deleted_pages.each do |d|
+                    =content_tag(:li, content_tag(:i, '',class:'icon-move menu-move')+d.anchor, id: "elem_#{d.id}")
               .span4
                 |Изменение параметров страницы
                 = simple_form_for :page_modules, url: update_page_path do |add_module|

@@ -29,7 +29,7 @@ jQuery(function($) {
         axis: 'x',
         items: "> li.sortable_item"
     });
-    $( "#menu" ).bind( "sortupdate", function(event, ui) {
+    $("#menu").bind( "sortupdate", function(event, ui) {
         var result = $('#menu').sortable('toArray');
         var dataParams = {};
         var id;
@@ -48,6 +48,65 @@ jQuery(function($) {
             $('#menu').sortable('disable');
            }
          });
+    });
+
+    $('#deleted_pages, #visible_pages').sortable({
+        connectWith: ".connectedSortable"
+    });
+    $("#deleted_pages, #visible_pages").bind( "sortreceive", function(event, ui) {
+        sender = ui.sender;
+    });
+    function disableLists() {
+        $('#deleted_pages, #visible_pages').addClass('menu_update');
+        $('#deleted_pages, #visible_pages').sortable('disable');
+    }
+    $("#deleted_pages, #visible_pages").bind( "sortstop", function(event, ui) {
+        if(!sender) return false;
+        var k = ui.item.attr('id').split('_')[1];
+        if(sender.data('type') == 'visible') {
+            // Удаляем
+            $.ajax({
+               type: "POST",
+               url: "/page_modules/delete_page",
+               data: {
+                    page_modules: { id: k }
+               },
+               beforeSend: function(){
+                    disableLists();
+               }
+             });
+        } else {
+            //Возвращаем
+            $.ajax({
+               type: "POST",
+               url: "/page_modules/retrieve_page",
+               data: {
+                    page_modules: { id: k }
+               },
+               beforeSend: function(){
+                    disableLists();
+               }
+             });
+        }
+        sender = null;
+        // var result = $('#menu').sortable('toArray');
+        // var dataParams = {};
+        // var id;
+        // for(var i=0;i<result.length;i++){
+        //     id = result[i].split('_')[1];
+        //     dataParams[id] = {order: i};
+        // }
+        // $.ajax({
+        //    type: "POST",
+        //    url: "/page_modules/menu_update",
+        //    data: {
+        //         menu_order: dataParams
+        //    },
+        //    beforeSend: function(){
+        //     $('#menu').addClass('menu_update');
+        //     $('#menu').sortable('disable');
+        //    }
+        //  });
     });
 
     $('.page-content, .cancel-redactor').on("click", function(){

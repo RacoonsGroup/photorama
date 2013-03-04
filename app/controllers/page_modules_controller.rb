@@ -2,7 +2,7 @@ class PageModulesController < ApplicationController
   before_filter :authenticate_user!, except: :show
   before_filter :template_variables_load, only: :show
   layout :load_template
-  respond_to :js, only: :menu_update
+  respond_to :js, only: [:menu_update, :delete_page, :retrieve_page]
 
   def create
     new_page = params[:page_modules][:module_type].constantize.new(slug: params[:page_modules][:slug], anchor: params[:page_modules][:anchor], project_id: current_user.project.id)
@@ -19,18 +19,19 @@ class PageModulesController < ApplicationController
   end
 
   def delete_page
-    PageModule.find(params[:page_modules][:id]).update_attributes(deleted: true, deleted_at: Time.now)
-    redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+    unless PageModule.find(params[:page_modules][:id]).update_attributes(deleted: true, deleted_at: Time.now)
+      flash[:error] = t(:page_not_deleted)
+    end
   end
 
   def retrieve_page
-    PageModule.find(params[:page_modules][:id]).update_attributes(deleted: false)
-    redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
+    unless PageModule.find(params[:page_modules][:id]).update_attributes(deleted: false)
+      flash[:error] = t(:page_not_retrieved)
+    end
   end
 
   def update_page
     PageModule.find(params[:page_modules][:id]).update_attributes(params[:page_modules].delete_if{|key, value| value.blank? })
-    redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
   end
 
   def menu_update
