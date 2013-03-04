@@ -1,0 +1,15 @@
+- photos.each do |photo|
+  .span3
+    h3
+      = photo.title
+    = link_to_fancy_photo photo
+
+- content_for :head do
+
+  = javascript_include_tag 'plugins/fancybox2/fancybox2'
+  = stylesheet_link_tag    'plugins/fancybox2/fancybox2', :media => 'all'
+
+  javascript:
+    jQuery(function($) {
+      $('.photos').fancybox();
+    })
