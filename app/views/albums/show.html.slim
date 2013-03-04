@@ -2,4 +2,4 @@
 
 h1 Photos
 
-= render 'partial/photos_gallery_fancybox',photos: @photos
+= render "partial/photos_gallery_#{@album.gallery_type}", photos: @photos

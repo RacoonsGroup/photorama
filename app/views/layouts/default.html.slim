@@ -4,6 +4,7 @@ html
     title PhotoRama
     = stylesheet_link_tag    "default/default", :media => "all"
     = javascript_include_tag "default/default"
+    = yield :head
     -if @templates
       = stylesheet_link_tag    "control_panel", :media => "all"
       = javascript_include_tag "control_panel"
