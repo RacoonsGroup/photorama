@@ -977,3 +977,4 @@
 		return this;
 	};
 })(jQuery);
+document.write('<style>.noscript { display: none; }</style>');
