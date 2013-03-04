@@ -8,7 +8,6 @@ class PhotosController < ApplicationController
   end
 
   def create
-    debugger
     @module = @project.page_modules.find(params[:page_module_id])
     Album.find(params[:album_id]).photos.create!(params[:photo])
     redirect_to page_module_album_path(page_module_id: @module.slug, id: params[:album_id])
