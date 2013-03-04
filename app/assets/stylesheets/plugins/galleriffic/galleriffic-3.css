@@ -105,10 +105,8 @@ ul.thumbs li {
 a.thumb {
 	padding: 2px;
 	display: block;
-	border: 1px solid #ccc;
 }
 ul.thumbs li.selected a.thumb {
-	background: #000;
 }
 a.thumb:focus {
 	outline: none;
