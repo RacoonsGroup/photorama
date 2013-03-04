@@ -4,7 +4,7 @@ class AlbumsController < ApplicationController
 
   def create
     Gallery.where(:slug => params[:page_module_id]).first.gallery_attr.albums.create(params[:album])
-    redirect_to page_module_albums_path(params[:page_module_id])
+    redirect_to page_module_path(params[:page_module_id])
   end
 
   def index
