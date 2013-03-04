@@ -5,3 +5,4 @@
 /log/*.log
 config/database.yml
 public/uploads/
+public/system/redactor_assets/
