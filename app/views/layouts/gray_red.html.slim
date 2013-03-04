@@ -8,12 +8,12 @@ html
       = stylesheet_link_tag    "control_panel", :media => "all"
       = javascript_include_tag "control_panel"
     = csrf_meta_tags
-    javascript:
-      jQuery(window).load(function() {
-      $x = $(window).width();
-      if($x > 1024)
-      jQuery('.magnifier').touchTouch();
-      });
+    / javascript:
+    /   jQuery(window).load(function() {
+    /   $x = $(window).width();
+    /   if($x > 1024)
+    /   jQuery('.magnifier').touchTouch();
+    /   });
   body
     -if @templates
       = render partial: 'partial/control_panel'
@@ -53,4 +53,3 @@ html
             a.icon-4 href="#"
         .privacy.pull-left
           |© Сайт сделан при помощи сервиса ФОТОРАМА.
-    script src="js/bootstrap.js" type="text/javascript"
