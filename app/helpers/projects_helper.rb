@@ -1,7 +1,7 @@
 module ProjectsHelper
 
   def link_to_fancy_photo(photo)
-    link_to image_tag( photo.file.thumb.url, alt: photo.title, class: 'img-polaroid'),  photo.file.url, class: 'photos', rel: 'group1'
+    link_to image_tag( photo.file.thumb.url, alt: photo.title, class: 'img-polaroid'),  photo.file.url, class: 'photos', rel: 'shadowbox[group]'
   end
 
   def link_to_galleriffic_photo(photo)

@@ -6,10 +6,8 @@
 
 - content_for :head do
 
-  = javascript_include_tag 'plugins/fancybox2/fancybox2'
-  = stylesheet_link_tag    'plugins/fancybox2/fancybox2', :media => 'all'
+  = javascript_include_tag 'plugins/shadowbox'
+  = stylesheet_link_tag    'plugins/shadowbox/shadowbox', :media => 'all'
 
   javascript:
-    jQuery(function($) {
-      $('.photos').fancybox();
-    })
+    Shadowbox.init();

@@ -6,7 +6,7 @@ gem "twitter-bootstrap-rails"
 gem "devise"
 gem 'carrierwave'
 gem "mini_magick"
-gem 'fancybox2-rails', '~> 0.2.4'
+gem 'shadowbox-rails'
 
 gem 'russian'
 gem 'activeadmin'

@@ -78,12 +78,6 @@ ActiveRecord::Schema.define(:version => 20130304124152) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "galleries", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "gallery_attrs", :force => true do |t|
     t.integer  "gallery_id"
     t.datetime "created_at", :null => false
@@ -119,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20130304124152) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "deleted",    :default => false
     t.datetime "deleted_at"
+    t.integer  "position",   :default => 1
     t.integer  "order"
   end
 
