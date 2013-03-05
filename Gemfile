@@ -23,7 +23,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'slim'
   gem 'less-rails'
-  # gem 'handlebars_assets'
 end
 
 group :development do

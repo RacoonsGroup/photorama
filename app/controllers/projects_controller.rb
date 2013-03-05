@@ -38,4 +38,9 @@ class ProjectsController < ApplicationController
   def add_item_to_menu
     render partial: 'partial/control_panel/control/add_item_to_menu_form'
   end
+
+  def render_block_tpl
+    @number_of_columns = params[:columns]
+    render partial: 'partial/blocks/block'
+  end
 end

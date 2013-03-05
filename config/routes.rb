@@ -26,4 +26,5 @@ PhotoRama::Application.routes.draw do
 
   put '/change_style' => 'projects#change_style'
   get '/add_item_to_menu' => 'projects#add_item_to_menu'
+  get '/render_block_tpl' => 'projects#render_block_tpl'
 end

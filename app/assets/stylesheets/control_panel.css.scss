@@ -57,3 +57,10 @@ div.page-content:hover .edit-icon {
 .menu_update {
   opacity: 0.5;
 }
+
+//Blocks
+.main_content [class*="span"] {
+  border: 1px dashed #000;
+  margin-left: 28px;
+  min-height: 100px;
+}
