@@ -21,5 +21,13 @@ class AlbumsController < ApplicationController
     @album = Album.new
   end
 
+  def update
+    album = Album.find(params[:id])
+    if album.update_attributes(params[:album])
+      flash[:notice] = 'Success'
+      redirect_to page_module_album_path(page_module_id: album.gallery_attr.gallery.slug, id: album.id)
+    end
+  end
+
 
 end
