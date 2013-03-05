@@ -13,6 +13,7 @@ gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 gem 'redactor-rails'
 gem 'simple_form'
+gem 'rails-backbone'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
