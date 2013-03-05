@@ -9,3 +9,4 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/photo_rama
+//= require jquery-fileupload

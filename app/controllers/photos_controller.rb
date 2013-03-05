@@ -3,6 +3,10 @@ class PhotosController < ApplicationController
   before_filter :template_variables_load
   layout :load_template
 
+  def index
+    @album = Album.find(params[:album_id])
+  end
+
   def new
     @photo = Photo.new
   end
