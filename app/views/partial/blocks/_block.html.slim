@@ -1,6 +1,16 @@
 - number_of_columns = @number_of_columns.to_i
 - span_value = 12/number_of_columns
-.row
-  - until number_of_columns.zero? do
-    - number_of_columns -= 1
-    div(class="span#{span_value}")
+.row.block-wrap
+  .span12
+    .row.block-control
+      .span12
+        .btn-group
+          = link_to '#', {class: 'merge-block btn', title: 'Объединить колонки'} do
+            i.icon-resize-small
+          = link_to '#', {class: 'remove-block btn', title: 'Удалить этоу строку'} do
+            i.icon-remove
+    .row.block-content
+      - until number_of_columns.zero? do
+        - number_of_columns -= 1
+        div.ololo(class="span#{span_value}")
+          .block-editable-area

@@ -1,29 +1,29 @@
-- if @page
-  div.page-content.tgl-block
-    - if @templates
-      div.edit-icon
-        i.icon-pencil
-    = raw @page.content
-  - if @templates
-    div.redactor-block.tgl-block
-      = form_for @page, url: main_page_path(@page), method: :put do |form|
-        = form.text_area :content, class: 'redactor'
-        = form.hidden_field :main_page_id
-        = form.submit
-        = form.button t(:cancel), class: 'cancel-redactor'
-- else
-  div.page-content.tgl-block
-    - if @templates
-      div.edit-icon
-        i.icon-pencil
-    - fish_text = "Вы ещё не заполнили главную страничку. но вы всегда это можете сделать!"
-    p =fish_text
-  - if @templates
-    div.redactor-block.tgl-block
-      = form_for :main_page_attr, url: main_pages_path do |form|
-        = form.check_box :gallery_toggle
-        = form.label :on_gallery
-        = form.text_area :content, class: 'redactor', value: fish_text
-        = form.hidden_field :main_page_id, value: @module.id
-        = form.submit
-        = form.button t(:cancel), class: 'cancel-redactor'
+/- if @page
+/  div.page-content.tgl-block
+/    - if @templates
+/      div.edit-icon
+/        i.icon-pencil
+/    = raw @page.content
+/  - if @templates
+/    div.redactor-block.tgl-block
+/      = form_for @page, url: main_page_path(@page), method: :put do |form|
+/        = form.text_area :content, class: 'redactor'
+/        = form.hidden_field :main_page_id
+/        = form.submit
+/        = form.button t(:cancel), class: 'cancel-redactor'
+/- else
+/  div.page-content.tgl-block
+/    - if @templates
+/      div.edit-icon
+/        i.icon-pencil
+/    - fish_text = "Вы ещё не заполнили главную страничку. но вы всегда это можете сделать!"
+/    p =fish_text
+/  - if @templates
+/    div.redactor-block.tgl-block
+/      = form_for :main_page_attr, url: main_pages_path do |form|
+/        = form.check_box :gallery_toggle
+/        = form.label :on_gallery
+/        = form.text_area :content, class: 'redactor', value: fish_text
+/        = form.hidden_field :main_page_id, value: @module.id
+/        = form.submit
+/        = form.button t(:cancel), class: 'cancel-redactor'

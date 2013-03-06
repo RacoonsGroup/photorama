@@ -35,12 +35,20 @@ html
             | Главная / Какая-то страница
       .wrap.main_content
         .container
+          .row.add-block-panel
+            .span12
+              .btn-toolbar
+                .btn-group
+                  = link_to 'I', '#', {class: 'add_block_to_main_content btn', title: 'Добавить одну колонку', 'data-number-of-columns' => 1}
+                  = link_to 'II', '#', {class: 'add_block_to_main_content btn', title: 'Добавить две колонки', 'data-number-of-columns' => 2}
+                  = link_to 'III', '#', {class: 'add_block_to_main_content btn', title: 'Добавить три колонки', 'data-number-of-columns' => 3}
+                  = link_to 'IIII', '#', {class: 'add_block_to_main_content btn', title: 'Добавить четыре колонки', 'data-number-of-columns' => 4}
+                .btn-group
+                  = link_to '#', {class: 'block-sortable btn', title: 'Изменить порядок блоков'} do
+                    i.icon-move
+
           .row
             .span12
-              = link_to 'Add one column', '#', {class: 'add_block_to_main_content', 'data-number-of-columns' => 1}
-              = link_to 'Add two columns', '#', {class: 'add_block_to_main_content', 'data-number-of-columns' => 2}
-              = link_to 'Add three columns', '#', {class: 'add_block_to_main_content', 'data-number-of-columns' => 3}
-              = link_to 'Add four columns', '#', {class: 'add_block_to_main_content', 'data-number-of-columns' => 4}
               = yield
     #footer
       .footer_bottom.bg_color1

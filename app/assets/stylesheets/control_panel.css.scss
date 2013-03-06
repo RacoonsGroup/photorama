@@ -15,13 +15,6 @@
 .redactor-block {
   display: none;
 }
-.edit-icon {
-  float: right;
-  border: 1px solid black;
-  border-radius:3px;
-  padding: 2px 4px;
-  visibility: hidden;
-}
 div.page-content:hover .edit-icon {
   visibility: visible;
 }
@@ -60,8 +53,25 @@ div.page-content:hover .edit-icon {
 }
 
 //Blocks
-.main_content [class*="span"] {
-  border: 1px dashed #000;
-  margin-left: 28px;
-  min-height: 100px;
+//controls
+.block-control {
+  padding-bottom: 10px;
 }
+.block-editable-area {
+  border: 1px dashed #000;
+  min-height: 100px;
+  position: relative;
+}
+.merge-marker .block-editable-area {
+  border-style: solid;
+}
+//.edit-icon {
+//  position: absolute;
+//  border: 1px solid black;
+//  border-radius:3px;
+//  padding: 2px 4px;
+//  display: none;
+//  top: 5px;
+//  right: 5px;
+//  background-color: #ffffff;
+//}

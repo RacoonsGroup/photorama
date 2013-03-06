@@ -111,25 +111,4 @@ jQuery(function($) {
       $('.tgl-block').toggle();
       return false;
     });
-
-    Blocks = {
-        init: function() {
-            this.bindEvents()
-        },
-
-        bindEvents: function() {
-            $('.add_block_to_main_content').on('click', this.addBlock)
-        },
-
-        addBlock: function() {
-            numberOfColumns = $(this).data('number-of-columns')
-            $.get('/render_block_tpl', {columns: numberOfColumns}, Blocks.renderTemplate)
-        },
-        
-        renderTemplate: function(data) {
-            $('.main_content').find('.container').append(data)
-        }
-    }
-
-    Blocks.init()
 });
