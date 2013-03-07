@@ -21,7 +21,10 @@ html
               .span4
                 .logo
                   a href="index.html"
-                    = image_tag 'red/logo.png'
+                    - if @project.logo
+                      = image_tag @project.logo
+                    - else
+                      = image_tag 'red/logo.png'
               .span8
                 .clear
                 nav#main_menu

@@ -10,6 +10,9 @@
           li
             a href="#page_control" data-toggle="tab"
               | Управление страницами
+          li
+            a href="#logo_upload" data-toggle="tab"
+              | Логотип
 
         .tab-content
           .tab-pane.active#design
@@ -20,4 +23,6 @@
               = render partial: 'partial/control_panel/deleted_page'
               .span4
                 .update_form
+          .tab-pane#logo_upload
+            = render partial: 'partial/control_panel/logo_upload'
   .hide_pointer
