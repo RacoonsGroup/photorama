@@ -47,9 +47,13 @@ div.page-content:hover .edit-icon {
   cursor: move;
   position: absolute;
   margin:  2px 0 0 -16px;
+  display: none;
 }
 .menu_update {
   opacity: 0.5;
+}
+#menu li:hover i.menu-move {
+  display: block;
 }
 
 //Blocks
