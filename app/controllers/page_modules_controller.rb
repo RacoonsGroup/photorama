@@ -2,7 +2,7 @@ class PageModulesController < ApplicationController
   before_filter :authenticate_user!, except: :show
   before_filter :template_variables_load, only: :show
   layout :load_template
-  respond_to :js, only: [:menu_update, :delete_page, :retrieve_page]
+  respond_to :js, only: [:menu_update_order, :delete_page, :retrieve_page, :update_page]
 
   def create
     new_page = params[:page_modules][:module_type].constantize.new(slug: params[:page_modules][:slug], anchor: params[:page_modules][:anchor], project_id: current_user.project.id)
@@ -39,10 +39,15 @@ class PageModulesController < ApplicationController
     PageModule.find(params[:page_modules][:id]).update_attributes(params[:page_modules].delete_if{|key, value| value.blank? })
   end
 
-  def menu_update
+  def menu_update_order
     unless PageModule.update(params[:menu_order].keys, params[:menu_order].values)
       flash[:error] = t(:page_order_not_updated)
     end
+  end
+
+  def edit
+    @page_params = PageModule.find(params[:id])
+    render partial: 'partial/control_panel/control/edit_item_to_menu_form'
   end
 
   def show
