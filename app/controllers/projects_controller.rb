@@ -39,6 +39,14 @@ class ProjectsController < ApplicationController
     render partial: 'partial/control_panel/control/add_item_to_menu_form'
   end
 
+  def change_logo
+    @project = Project.find_by_subdomain(request.subdomain)
+    @project.update_attributes(logo: params[:project][:logo])
+    if @project.save
+      redirect_to root_url(:host => with_subdomain(@project.subdomain))
+    end
+  end
+
   def render_block_tpl
     @number_of_columns = params[:columns]
     render partial: 'partial/blocks/block'
