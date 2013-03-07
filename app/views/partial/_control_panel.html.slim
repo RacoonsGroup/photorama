@@ -18,10 +18,5 @@
             .row
               = render partial: 'partial/control_panel/showed_page'
               = render partial: 'partial/control_panel/deleted_page'
-              .span4.update_form
-                |Изменение параметров страницы
-                = simple_form_for :page_modules, url: update_page_path do |add_module|
-                  = add_module.input :id, as: :hidden
-                  = add_module.input :anchor
-                  = add_module.input :slug
-                  = add_module.submit 'Update page'
+              .span4
+                .update_form

@@ -112,4 +112,21 @@ jQuery(function($) {
       $('.tgl-block').toggle();
       return false;
     });
+
+
+    $(document).on('click', '.edit_page',  function(){
+      var id_edit = $(this).parent('li').attr('id').split('_')[1];
+      $('.update_form').load("/page_modules/"+id_edit+"/edit");
+    });
+    $(document).on('click', '#submit_page_update',  function(){
+      $.ajax({
+         type: "POST",
+         url: "/page_modules/update_page",
+         data: $('#update_module_page').serialize(),
+         beforeSend: function(){
+            $('.update_form').text('update');
+         }
+       });
+      return false;
+    });
 });
