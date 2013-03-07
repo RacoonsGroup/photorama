@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304124152) do
+ActiveRecord::Schema.define(:version => 20130307135541) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20130304124152) do
     t.integer  "template_id"
     t.integer  "color_scheme_id"
     t.integer  "background_id"
+    t.string   "logo"
   end
 
   add_index "projects", ["subdomain"], :name => "index_projects_on_subdomain", :unique => true
