@@ -19,8 +19,13 @@ class PageModulesController < ApplicationController
   end
 
   def delete_page
-    unless PageModule.find(params[:page_modules][:id]).update_attributes(deleted: true, deleted_at: Time.now)
-      flash[:error] = t(:page_not_deleted)
+    delete_page = PageModule.find(params[:page_modules][:id])
+    if delete_page.slug == 'main'
+      flash[:error] = t(:main_page_do_not_delet)
+    else
+      unless delete_page.update_attributes(deleted: true, deleted_at: Time.now)
+        flash[:error] = t(:page_not_deleted)
+      end
     end
   end
 

@@ -49,7 +49,8 @@ jQuery(function($) {
     });
 
     $('#deleted_pages, #visible_pages').sortable({
-        connectWith: ".connectedSortable"
+        connectWith: ".connectedSortable",
+        items: "> li.sortable_item"
     });
     $("#deleted_pages, #visible_pages").bind( "sortreceive", function(event, ui) {
         sender = ui.sender;
