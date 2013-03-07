@@ -129,4 +129,7 @@ jQuery(function($) {
        });
       return false;
     });
+    $('.hide_pointer').on('click', function(){
+      $('.control_hide_block').slideToggle('slow');
+    });
 });
