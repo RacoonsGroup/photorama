@@ -37,7 +37,7 @@ jQuery(function($) {
         }
         $.ajax({
            type: "POST",
-           url: "/page_modules/menu_update",
+           url: "/page_modules/menu_update_order",
            data: {
                 menu_order: dataParams
            },

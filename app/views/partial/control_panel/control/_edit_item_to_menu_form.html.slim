@@ -1,0 +1,7 @@
+|Изменение параметров страницы
+= simple_form_for :page_modules, url: update_page_path, html: {id: 'update_module_page'} do |add_module|
+  = add_module.input :id, as: :hidden, input_html: { value: @page_params.id}
+  = add_module.input :anchor, input_html: { value: @page_params.anchor}
+  -unless @page_params.slug == 'main'
+    = add_module.input :slug, input_html: { value: @page_params.slug}
+  = add_module.submit 'Update page', id: 'submit_page_update'
