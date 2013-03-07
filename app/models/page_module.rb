@@ -9,6 +9,14 @@ class PageModule < ActiveRecord::Base
             presence: true,
             uniqueness: { scope: :project_id }
 
+  validate :pages_count_limit, :on => :create
+
+  def pages_count_limit
+    if self.project.page_modules.count >= 5
+      errors.add(:base, "Exceeded thing limit")
+    end
+  end
+
   validates :anchor,
             presence: true
   TYPES = [['Статическая страница', 'StaticPage'], ['Галлерея', 'Gallery']]
