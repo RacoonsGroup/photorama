@@ -1,4 +1,4 @@
-= link_to "Add photos", new_page_module_album_photo_path(page_module_id: @module.id, album_id: @album.id), role: "button", class:"btn"
+= link_to "Add photos", new_album_photo_path(page_id: @module.id, album_id: @album.id), role: "button", class:"btn"
 
 br
 
@@ -13,6 +13,6 @@ h1 Photos
     = button_tag 'x', type: 'button', class: 'close', 'data-dismiss' => "modal", 'aria-hidden' => "true"
     | Change gallery type
   .modal-body
-    = simple_form_for [:page_module, @album] do |f|
+    = simple_form_for [@album] do |f|
       = f.collection_radio_buttons :gallery_type, [['shadowbox', 'Shadowbox'] ,['galerffies', 'Galerffies']], :first, :last
       = f.button :submit

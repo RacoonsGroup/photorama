@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_url(:host => with_subdomain(false))
     end
     @menu = @project.page_modules.by_order if @project
-    params[:id] ||= 'main'
+    params[:page_id] ||= 'main'
 
     if current_user && @project.user_id == current_user.id
       @templates = Template.all

@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   layout :load_template
 
   def show
-      @module = @project.page_modules.find_by_slug(params[:id])
+      @module = @project.page_modules.find_by_slug(params[:page_id])
       @page = MainPageAttr.find_by_main_page_id(@module.id)
       render template: 'page_modules/main_page.html.slim'
   end

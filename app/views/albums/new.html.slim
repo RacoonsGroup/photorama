@@ -1,7 +1,7 @@
-= simple_form_for [:page_module, @album]  do |form|
+= simple_form_for [@album]  do |form|
   = form.input :title
   = form.input :desc, input_html: {class:'redactor'}, as:'text'
-  = f.collection_radio_buttons :gallery_type, [['shadowbox', 'Shadowbox'] ,['galerffies', 'Galerffies']], :first, :last
+  = form.collection_radio_buttons :gallery_type, [['shadowbox', 'Shadowbox'] ,['galerffies', 'Galerffies']], :first, :last
   = form.input :order, as: :integer
   = form.button :submit
 

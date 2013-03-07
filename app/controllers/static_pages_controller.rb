@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
     else
       flash[:error] = t(:update_static_page_not_updated)
     end
-    redirect_to page_module_url(id: @update_static_page.static_page.slug, host: with_subdomain(current_user.project.subdomain))
+    redirect_to page_module_url(page_id: @update_static_page.static_page.slug, host: with_subdomain(current_user.project.subdomain))
   end
 
   def create
@@ -19,6 +19,6 @@ class StaticPagesController < ApplicationController
     else
       flash[:error] = t(:new_static_page_not_created)
     end
-    redirect_to page_module_url(id: @new_static_page.static_page.slug, host: with_subdomain(current_user.project.subdomain))
+    redirect_to page_module_url(page_id: @new_static_page.static_page.slug, host: with_subdomain(current_user.project.subdomain))
   end
 end

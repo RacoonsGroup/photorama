@@ -1,4 +1,4 @@
-= simple_form_for [:page_module, :album, @photo], :html => { :multipart => true } do |f|
+= simple_form_for [:album, @photo], :html => { :multipart => true } do |f|
   = f.input :title
   = f.input :desc
   = f.input :file, as: :file

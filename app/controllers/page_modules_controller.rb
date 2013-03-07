@@ -11,7 +11,7 @@ class PageModulesController < ApplicationController
       if params[:page_modules][:module_type] == 'Gallery'
         GalleryAttr.create(:gallery_id => Gallery.last.id)
       end
-      redirect_to page_module_url(id: new_page.slug, host: with_subdomain(current_user.project.subdomain))
+      redirect_to page_module_url(page_id: new_page.slug, host: with_subdomain(current_user.project.subdomain))
     else
       flash[:error] = t(:new_page_not_created)
       redirect_to root_url(host: with_subdomain(current_user.project.subdomain))
@@ -41,7 +41,7 @@ class PageModulesController < ApplicationController
   end
 
   def show
-    @module = @project.page_modules.find_by_slug(params[:id])
+    @module = @project.page_modules.find_by_slug(params[:page_id])
     @page = (@module.type + 'Attr').constantize
     @page = @page.where((@module.type.underscore + '_id').to_sym => @module.id).first
     render 'page_modules/' + @module.type.underscore + '.html.slim'

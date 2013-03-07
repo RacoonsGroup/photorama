@@ -7,7 +7,7 @@
     = raw @page.content
   - if @templates
     div.redactor-block.tgl-block
-      = form_for @page, url: static_page_path, method: :put do |form|
+      = form_for @page, url: static_page_url(@page.id), method: :put do |form|
         = form.text_area :content, class: 'redactor'
         = form.hidden_field :static_page_id
         = form.submit
