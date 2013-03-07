@@ -55,6 +55,10 @@ div.page-content:hover .edit-icon {
 #menu li:hover i.menu-move {
   display: block;
 }
+#deleted_pages,#visible_pages {
+  padding: 2px;
+  border: 1px solid lightgray;
+}
 
 //Blocks
 //controls
