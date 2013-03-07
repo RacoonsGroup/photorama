@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(:version => 20130304124152) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "deleted",    :default => false
     t.datetime "deleted_at"
-    t.integer  "position",   :default => 1
     t.integer  "order"
   end
 
