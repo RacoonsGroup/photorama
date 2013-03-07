@@ -16,16 +16,8 @@
             = render partial: 'partial/control_panel/design'
           .tab-pane#page_control
             .row
-              .span4
-                |Страницы сайта
-                ul#visible_pages.connectedSortable data-type="visible"
-                  -@project.page_modules.not_deleted_pages.each do |d|
-                    =content_tag(:li, content_tag(:i, '',class:'icon-move menu-move')+d.anchor, id: "elem_#{d.id}")
-              .span4
-                |Удаленные страницы
-                ul#deleted_pages.connectedSortable data-type="deleted"
-                  -@project.page_modules.deleted_pages.each do |d|
-                    =content_tag(:li, content_tag(:i, '',class:'icon-move menu-move')+d.anchor, id: "elem_#{d.id}")
+              = render partial: 'partial/control_panel/showed_page'
+              = render partial: 'partial/control_panel/deleted_page'
               .span4
                 |Изменение параметров страницы
                 = simple_form_for :page_modules, url: update_page_path do |add_module|

@@ -1,0 +1,5 @@
+.span4
+  |Удаленные страницы
+  ul#deleted_pages.connectedSortable data-type="deleted"
+    -@project.page_modules.deleted_pages.each do |d|
+      =content_tag(:li, content_tag(:i, '',class:'icon-move menu-move')+d.anchor, id: "elem_#{d.id}")
