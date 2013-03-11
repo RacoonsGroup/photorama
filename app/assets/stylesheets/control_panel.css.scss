@@ -67,11 +67,11 @@ div.page-content:hover .edit-icon {
 //Blocks
 //controls
 .block-control {
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 .block-editable-area {
   border: 1px dashed #000;
-  min-height: 100px;
+  min-height: 30px;
   position: relative;
 }
 .merge-marker .block-editable-area {

@@ -13,6 +13,7 @@ PhotoRama::Application.routes.draw do
     get '/add_item_to_menu' => 'projects#add_item_to_menu'
     put '/change_style' => 'projects#change_style'
     get '/render_block_tpl' => 'projects#render_block_tpl'
+    get '/render_block_control' => 'projects#render_block_control'
     put '/change_logo' => 'projects#change_logo', as: :change_logo
 
     constraints :page_id => /([a-z0-9\-\_]{3,})/ do

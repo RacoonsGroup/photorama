@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
     params[:page_id] ||= 'main'
 
     if current_user && @project.user_id == current_user.id
+      @project_owner = true
       @templates = Template.all
       @backgrounds = Background.all
       @color_schemes = ColorScheme.all

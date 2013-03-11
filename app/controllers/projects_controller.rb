@@ -51,4 +51,8 @@ class ProjectsController < ApplicationController
     @number_of_columns = params[:columns]
     render partial: 'partial/blocks/block'
   end
+
+  def render_block_control
+    render partial: 'partial/blocks/block_control'
+  end
 end

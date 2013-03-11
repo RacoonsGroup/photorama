@@ -2,11 +2,13 @@ jQuery(function($) {
     Blocks = {
         init: function() {
             this.bindEvents()
+            this.addBlockControl()
         },
 
         bindEvents: function() {
             $('.add_block_to_main_content').on('click', this.addBlock)
             $('.block-sortable').on('click', this.sortBlocks)
+            $('.block-page-save').on('click', this.savePage)
             $(document).on('click', '.remove-block', this.removeBlock)
             $(document).on('click', '.block-editable-area', this.bindRedactor)
             $(document).on('click', '.merge-block', this.prepareToMerge)
@@ -17,8 +19,16 @@ jQuery(function($) {
             $.get('/render_block_tpl', {columns: numberOfColumns}, Blocks.renderTemplate)
         },
 
+        addBlockControl: function() {
+            $.get('/render_block_control', Blocks.renderControl)
+        },
+
         renderTemplate: function(data) {
             $('.main_content').find('.container').append(data)
+        },
+
+        renderControl: function(data) {
+            $('.block-wrap > .span12').prepend(data)
         },
 
         removeBlock: function() {
@@ -60,7 +70,7 @@ jQuery(function($) {
                 $(this).addClass('now-sorted').addClass('btn-primary')
                 $('.main_content').find('.container').sortable({
                     axis: 'y',
-                    items: "> .row:not(.add-block-panel)"
+                    items: "> .row:not(.add-block-panel, .page-head)"
                 })
             }
 
@@ -94,7 +104,7 @@ jQuery(function($) {
                     .addClass('span' + newSpanIndex)
                     .removeClass('merge-marker')
                     .find('.block-editable-area')
-                    .html($(target).html())
+                    .append($(target).html())
                     .parents('.block-wrap')
                     .find('.merge-block')
                     .removeClass('merging-blocks')
@@ -113,7 +123,7 @@ jQuery(function($) {
                     .removeClass( Blocks.spanCheck($thisSpan))
                     .addClass('span' + newSpanIndex)
                     .find('.block-editable-area')
-                    .html(innerHTML)
+                    .append(innerHTML)
                     .parents('.block-wrap')
                     .find('.merge-block')
                     .removeClass('merging-blocks')
@@ -147,7 +157,32 @@ jQuery(function($) {
 
         newSpanIndex: function(first_index, second_index) {
             return Blocks.spanIndex( Blocks.spanCheck(first_index) ) + Blocks.spanIndex( Blocks.spanCheck(second_index) )
+        },
+
+        savePage: function() {
+            var pageID = $(this).data('page-id')
+            var content = ''
+
+            $.each($('.block-content'), function(index, item) {
+                content += '<div class="row block-wrap"><div class="span12"><div class="row block-content">' + $(item).html() + '</div></div></div>'
+            })
+
+            $.ajax({
+                type: 'PUT',
+                url: '/static_pages/'+pageID,
+                data: {
+                    'static_page_attr[content]': content,
+                    'static_page_attr[static_page_id]': pageID
+                },
+                success: function() {
+                    // TODO: Сделать норм оповещения
+                    alert('Все ок!')
+                }
+            });
+
+            return false
         }
+
     }
 
     Blocks.init()

@@ -2,13 +2,7 @@
 - span_value = 12/number_of_columns
 .row.block-wrap
   .span12
-    .row.block-control
-      .span12
-        .btn-group
-          = link_to '#', {class: 'merge-block btn', title: 'Объединить колонки'} do
-            i.icon-resize-small
-          = link_to '#', {class: 'remove-block btn', title: 'Удалить этоу строку'} do
-            i.icon-remove
+    = render partial: 'partial/blocks/block_control'
     .row.block-content
       - until number_of_columns.zero? do
         - number_of_columns -= 1
