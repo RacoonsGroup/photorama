@@ -3,16 +3,16 @@ class AlbumsController < ApplicationController
   layout :load_template
 
   def create
-    Gallery.where(:slug => params[:page_module_id]).first.gallery_attr.albums.create(params[:album])
-    redirect_to page_module_path(params[:page_module_id])
+    Gallery.where(:slug => params[:page_id]).first.gallery_attr.albums.create(params[:album])
+    redirect_to page_module_path(params[:page_id])
   end
 
   def index
-    @albums = Gallery.where(:slug => params[:page_module_id]).first.gallery_attr.albums
+    @albums = Gallery.where(:slug => params[:page_id]).first.gallery_attr.albums
   end
 
   def show
-    @module = @project.page_modules.find_by_slug(params[:page_module_id])
+    @module = @project.page_modules.find_by_slug(params[:page_id])
     @album = Album.find(params[:id])
     @photos = @album.photos
   end
@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
     album = Album.find(params[:id])
     if album.update_attributes(params[:album])
       flash[:notice] = 'Success'
-      redirect_to page_module_album_path(page_module_id: album.gallery_attr.gallery.slug, id: album.id)
+      redirect_to page_module_album_path(page_id: album.gallery_attr.gallery.slug, id: album.id)
     end
   end
 
