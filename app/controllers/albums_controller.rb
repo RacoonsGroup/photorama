@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
     album = Album.find(params[:id])
     if album.update_attributes(params[:album])
       flash[:notice] = 'Success'
-      redirect_to page_module_album_path(page_id: album.gallery_attr.gallery.slug, id: album.id)
+      redirect_to album_path(page_id: album.gallery_attr.gallery.slug, id: album.id)
     end
   end
 
