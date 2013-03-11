@@ -11,3 +11,4 @@
 //= require backbone_datalink
 //= require backbone/photo_rama
 //= require jquery-fileupload
+//= require plugins/jquery.cookie

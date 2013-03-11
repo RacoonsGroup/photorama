@@ -129,7 +129,27 @@ jQuery(function($) {
        });
       return false;
     });
-    $('.hide_pointer').on('click', function(){
-      $('.control_hide_block').slideToggle('slow');
+
+    // Hide Show control panel
+    var show = $('.slide-show');
+    show.on('click', function(){
+      $('.control_hide_block').slideToggle('slow', function(){
+        if($(this).css('display') == 'none') {
+          $('.icon-arrow-up').removeClass('icon-arrow-up').addClass('icon-arrow-down');
+          $.cookie('panel_visible', 'hide', { expires: 7, path: '/' });
+        } else {
+          $('.icon-arrow-down').removeClass('icon-arrow-down').addClass('icon-arrow-up');
+          $.cookie('panel_visible', 'show', { expires: 7, path: '/' });
+        }
+      });
     });
+    controlPanel();
+
+    function controlPanel() {
+      var panel_visible = $.cookie('panel_visible');
+      if (panel_visible != undefined && panel_visible == 'hide') {
+        $('.control_hide_block').css('display', 'none');
+        $('.icon-arrow-up').removeClass('icon-arrow-up').addClass('icon-arrow-down');
+      };
+    }
 });

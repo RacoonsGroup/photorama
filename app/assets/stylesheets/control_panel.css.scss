@@ -11,6 +11,15 @@
 
 .control-panel {
   background: gray;
+
+  background-color: #fff;
+
+  box-shadow: 0 5px 5px #ccc;
+  border-bottom: 1px solid #c64012;
+
+}
+.control_hide_block {
+  padding: .5em 0;
 }
 .redactor-block {
   display: none;
@@ -90,7 +99,32 @@ div.page-content:hover .edit-icon {
 
 //HIDE BLOCK
 .hide_pointer {
-  height: 10px;
-  background: yellow;
+  padding: .5em 0;
+  background: #d44413;
+
+  text-shadow: 0 1px 0 #c64012;
+  color: #fff;
+}
+.control-panel .hide_pointer a {
+  color: #fff;
   cursor: pointer;
 }
+.hide_pointer .position-fix {
+  margin-top: -1px;
+}
+.hide_pointer .icon-white {
+  margin-right: 5px;
+}
+// .hide_pointer .show-hide{
+//   cursor: pointer;
+//   display: block;
+//   padding: 0.5em 1em;
+//   position: relative;
+//   margin-bottom: -3em;
+
+//   background: #fff;
+//   float: right;
+
+//   border: 1px solid red;
+//   border-top:  1px solid white;
+// }

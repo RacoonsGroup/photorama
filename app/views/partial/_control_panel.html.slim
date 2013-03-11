@@ -3,26 +3,40 @@
   .container
     .row
       .span12.control_hide_block
-        ul.nav.nav-tabs
-          li.active
-            a href="#design" data-toggle="tab"
-              | Дизайн
-          li
-            a href="#page_control" data-toggle="tab"
-              | Управление страницами
-          li
-            a href="#logo_upload" data-toggle="tab"
-              | Логотип
+        .tabbable.tabs-left
+          ul.nav.nav-tabs
+            li.active
+              a href="#design" data-toggle="tab"
+                | Дизайн
+            li
+              a href="#page_control" data-toggle="tab"
+                | Управление страницами
+            li
+              a href="#logo_upload" data-toggle="tab"
+                | Логотип
 
-        .tab-content
-          .tab-pane.active#design
-            = render partial: 'partial/control_panel/design'
-          .tab-pane#page_control
-            .row
-              = render partial: 'partial/control_panel/showed_page'
-              = render partial: 'partial/control_panel/deleted_page'
-              .span4
-                .update_form
-          .tab-pane#logo_upload
-            = render partial: 'partial/control_panel/logo_upload'
+          .tab-content
+            .tab-pane.active#design
+              = render partial: 'partial/control_panel/design'
+            .tab-pane#page_control
+              .row
+                = render partial: 'partial/control_panel/showed_page'
+                = render partial: 'partial/control_panel/deleted_page'
+                .span4
+                  .update_form
+            .tab-pane#logo_upload
+              = render partial: 'partial/control_panel/logo_upload'
   .hide_pointer
+    .container
+      .row
+        .span6
+        .span2
+          =link_to content_tag(:i, '', class: 'icon-home icon-white position-fix')+'PhotoRama', root_url(subdomain: false)
+        .span2
+          a.profile
+            i.icon-user.icon-white.position-fix
+            |Настройки профиля
+        .span2
+          a.slide-show.text-right
+            i.icon-arrow-up.icon-white
+            |Панель управления
