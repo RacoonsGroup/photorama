@@ -5,4 +5,4 @@
   ul
   - @page.albums.each do |album|
     li
-      = link_to album.title,  album_path(id:album.id, page_module_id:@module.slug)
+      = link_to album.title,  album_path(id:album.id, page_id:@module.slug)

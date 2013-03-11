@@ -1,6 +1,6 @@
 .container
   h2 Upload file
-  = form_for [:page_module, :album, Photo.new], :html => { :multipart => true, :id => "fileupload"  } do |f|
+  = form_for [:album, Photo.new], :html => { :multipart => true, :id => "fileupload"  } do |f|
     /! The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload
     .row.fileupload-buttonbar
       .span7
