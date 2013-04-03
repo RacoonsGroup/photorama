@@ -12,6 +12,7 @@ jQuery(function($) {
             $(document).on('click', '.remove-block', this.removeBlock)
             $(document).on('click', '.block-editable-area', this.bindRedactor)
             $(document).on('click', '.merge-block', this.prepareToMerge)
+            $(document).on('click', '.split-block', this.prepareToMerge)
         },
 
         addBlock: function() {
@@ -35,11 +36,14 @@ jQuery(function($) {
             $(this).parents('.block-wrap').remove()
         },
 
+        // TODO: Я сам не сразу въехал как это работает
         bindRedactor: function() {
             if ($('.block-sortable').hasClass('now-sorted')) {
                 alert('Невозможно редактировать текст во время изменения порядка блоков!')
-            } else if ($(this).parents('.block-wrap').find('.merge-block').hasClass('merging-blocks')) {
+            } else if ($(this).parents('.block-wrap').find('.merge-block').hasClass('in-action')) {
                 Blocks.mergingColumns(this)
+            } else if ($(this).parents('.block-wrap').find('.split-block').hasClass('in-action')) {
+                Blocks.splitColumns(this)
             } else {
                 var target = $(this)
                 $(this).redactor({
@@ -80,12 +84,27 @@ jQuery(function($) {
         prepareToMerge: function() {
             Blocks.killAllRedactors()
 
-            if ($(this).hasClass('merging-blocks')) {
-                $(this).removeClass('merging-blocks').removeClass('btn-primary')
+            if ($(this).hasClass('in-action')) {
+                $(this).removeClass('in-action').removeClass('btn-primary')
             } else {
-                $(this).addClass('merging-blocks').addClass('btn-primary')
-                alert('Выберите два блока, которые хотите объединить!')
+                if ($(this).hasClass('merge-block')) {
+                    if($(this).next().hasClass('in-action')) {
+                        alert('Сначала закончите операция деления!')
+                    } else {
+                        $(this).addClass('in-action').addClass('btn-primary')
+                        alert('Выберите два блока, которые хотите объединить!')
+                    }
+                }
+                if ($(this).hasClass('split-block')) {
+                    if($(this).prev().hasClass('in-action')) {
+                        alert('Сначала закончите операция объединения!')
+                    } else {
+                        $(this).addClass('in-action').addClass('btn-primary')
+                        alert('Выберите блок, который вы хотите поделить!')
+                    }
+                }
             }
+
 
             return false
         },
@@ -105,9 +124,10 @@ jQuery(function($) {
                     .removeClass('merge-marker')
                     .find('.block-editable-area')
                     .append($(target).html())
+                    // TODO : Дубль
                     .parents('.block-wrap')
                     .find('.merge-block')
-                    .removeClass('merging-blocks')
+                    .removeClass('in-action')
                     .removeClass('btn-primary')
 
                 $thisSpan.remove()
@@ -126,7 +146,7 @@ jQuery(function($) {
                     .append(innerHTML)
                     .parents('.block-wrap')
                     .find('.merge-block')
-                    .removeClass('merging-blocks')
+                    .removeClass('in-action')
                     .removeClass('btn-primary')
 
             } else if ($thisSpan.prevAll().hasClass('merge-marker') || $thisSpan.nextAll().hasClass('merge-marker')) { //Row has marked cols, but not neighbour
@@ -138,6 +158,23 @@ jQuery(function($) {
                 $(target).parent().addClass('merge-marker')
 
             }
+        },
+
+        splitColumns: function(target) {
+            var $column = $(target).parent()
+            var colWidth = Blocks.spanCheck($column)
+            var spanIndex = Blocks.spanIndex(colWidth)
+            $column
+                .removeClass(colWidth)
+                .addClass('span' + spanIndex/2)
+                .after  ($column.clone())
+                .next()
+                .find('.block-editable-area')
+                .empty()
+                .parents('.block-wrap')
+                .find('.split-block')
+                .removeClass('in-action')
+                .removeClass('btn-primary')
         },
 
         spanCheck: function(target) {
