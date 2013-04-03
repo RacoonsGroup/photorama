@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :authenticate_user!, only: :template_variables_load
   include UrlHelper
   protect_from_forgery
   def after_sign_in_path_for(resource)
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
     if project.template
       project.template.layout_name
     else
-      'red'
+      'project'
     end
   end
 
@@ -25,6 +26,8 @@ class ApplicationController < ActionController::Base
     end
     @menu = @project.page_modules.by_order if @project
     params[:page_id] ||= 'main'
+
+    p current_user
 
     if current_user && @project.user_id == current_user.id
       @project_owner = true

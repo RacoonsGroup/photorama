@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title PhotoRama
+    = stylesheet_link_tag    "project/manifest", :media => "all"
+    = javascript_include_tag "project/manifest"
+    = yield :head
+    -if @templates
+      = stylesheet_link_tag    "control_panel", :media => "all"
+      = javascript_include_tag "control_panel"
+    = csrf_meta_tags
+    = render partial: 'partial/red/color_scheme'
+  body.bg_color1
+    header.bg_color3
+      .container
+        .row
+          .span12
+            h1 = current_user
+    nav.bg_color2
+      .container
+        .row
+          .span12
+            ul#menu.nav.nav-pills
+              = render partial: 'partial/menu'
+    /section#carousel.bg_color3
+      h3 ololo
+      / Nothing
+    section#main-content.bg_color3
+      .container
+        = yield
+    footer.bg_color1
+      .container
+        .row
+          .span6
+            p © Сайт сделан при помощи сервиса ФОТОРАМА.
+          .span6.text-right
+            p Ваша правовая информация здесь

@@ -1,7 +1,8 @@
+//= require jquery
 //= require control_panel/control_panel
 //= require control_panel/block
-//= require plugins/bootstrap.min.js
-//= require plugins/jcarousellite_1.0.1.min
+// require plugins/bootstrap.min.js
+// require plugins/jcarousellite_1.0.1.min
 //= require redactor-rails
 //= require redactor-rails/ru
 //= require jquery.ui.all

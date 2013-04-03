@@ -1,5 +1,4 @@
 <style>
-
 <%- if @project.color_scheme %>
 <%-  colors = @project.color_scheme %>
 <%- else %>
@@ -8,7 +7,7 @@
 
 .bg_color1 {
   background-color: <%= colors.color1 %>;
-  color: <%= colors.color6 %>;
+  color: <%= colors.color7 %>;
 }
 .bg_color1 a {
   color: <%= colors.color6 %>;
@@ -20,6 +19,13 @@
 .bg_color2 {
   background-color: <%= colors.color2 %>;
   color: <%= colors.color3 %>;
+}
+.bg_color2 a {
+    color: <%= colors.color3 %>;
+}
+.bg_color2 a:hover {
+    color: <%= colors.color1 %>;
+    background-color: <%= colors.color4 %> !important;
 }
 
 .bg_color3 {
@@ -47,5 +53,4 @@
     background-image: url('<%= @project.background.background %>');
 }
 <%- end %>
-
 </style>
