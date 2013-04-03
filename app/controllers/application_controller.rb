@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     if project.template
       project.template.layout_name
     else
-      'default'
+      'red'
     end
   end
 
